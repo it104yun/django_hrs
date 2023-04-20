@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4adadbfb-ef6d-473d-a98c-28d908ccd2bc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/kpi/static/js/kpi/pm620.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/kpi/templates/kpi/pm620.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api_kpi.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api_kpi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api_kpi_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api_kpi_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api_skill_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api_skill_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/kpi/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/kpi/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/kpi/static/js/kpi/pm610.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/kpi/static/js/kpi/pm610.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/kpi/static/reports/.project" beforeDir="false" afterPath="$PROJECT_DIR$/apps/kpi/static/reports/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/kpi/static/reports/.settings/org.eclipse.core.resources.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/apps/kpi/static/reports/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/kpi/static/reports/PM602-MetricsSetup_Year.jrxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/kpi/static/reports/PM602-MetricsSetup_Year_SubReport.jrxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/kpi/static/reports/PM604_MAIN.jrxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/kpi/static/reports/PM604_SUB.jrxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/kpi/templates/kpi/pm610.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/kpi/templates/kpi/pm610.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/kpi/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/kpi/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/media/reports/pdf/pm602_20210205_143405.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/media/reports/pdf/pm602_20210205_153209.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/media/reports/pdf/pm602_20210205_164213.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/media/reports/pdf/pm602_20210206_064323.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/media/reports/pdf/pm604_20210205_153949.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrs/api_urls_kpi.py" beforeDir="false" afterPath="$PROJECT_DIR$/hrs/api_urls_kpi.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="JupyterTrust" id="a660a9ac-de29-424b-b81d-ff0d4131d648" />
+  <component name="ProjectId" id="1xqMd8fag2e9Fd1zBZpdcBsozjF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/system/static/js/system/sy130.js" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\webapps\virtualenv\TLC_HRS\hrs\apps\kpi\templates\kpi" />
+      <recent name="D:\webapps\virtualenv\TLC_HRS\hrs\apps\kpi\static\js\kpi" />
+      <recent name="D:\webapps\virtualenv\TLC_HRS\hrs\apps\skill_pdca\static\js\skill_pdca" />
+      <recent name="D:\webapps\virtualenv\TLC_HRS\hrs\apps\skill_pdca\templates\skill_pdca" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4adadbfb-ef6d-473d-a98c-28d908ccd2bc" name="Default Changelist" comment="" />
+      <created>1631078251450</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631078251450</updated>
+      <workItem from="1631078252545" duration="2000" />
+      <workItem from="1631078269210" duration="12633000" />
+      <workItem from="1631261726921" duration="63161000" />
+      <workItem from="1631666365981" duration="6744000" />
+      <workItem from="1631675620844" duration="2912000" />
+      <workItem from="1631685045007" duration="24119000" />
+      <workItem from="1631840914034" duration="40465000" />
+      <workItem from="1632449597103" duration="24068000" />
+      <workItem from="1634260624601" duration="445000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1828" y="92" width="1736" height="896" maximized="true" key="DiffContextDialog" timestamp="1631859982134">
+      <screen x="-1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1828" y="92" width="1736" height="896" maximized="true" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1631859982134" />
+    <state x="-1180" y="285" key="FileChooserDialogImpl" timestamp="1632723263264">
+      <screen x="-1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1180" y="285" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1632723263264" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1080@0.0.1920.1040" timestamp="1631078299655" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1631931325048">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1631931325048" />
+  </component>
+</project>

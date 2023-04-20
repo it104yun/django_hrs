@@ -1,0 +1,80 @@
+{% extends 'base/base.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/skill_pdca/tt626.js' %}"></script>
+    <style>
+       th, td {
+          padding: 10px;
+        }
+
+       .style0 {
+           width: 650px;
+           height:250px;
+           background-color: cornsilk;
+           /*border: 1mm ridge rgba(50, 170, 255, .6);*/
+           border: 5mm inset rgba(255, 255, 0, .6);
+           border-radius: 10px;
+       }
+       .style1 {
+           width: 650px;
+           height:250px;
+           background-color: cornsilk;
+           /*border: 1mm ridge rgba(50, 170, 255, .6);*/
+           border: 5mm outset rgba(0, 255, 255, .6);
+           border-radius: 10px;
+       }
+    </style>
+{% endblock %}
+
+{% block layout %}
+    <p style="padding: 5px;"></p>
+    <table>
+        <tr>
+            <td>
+               <input id="chinese" class="style0" placeholder="貼上中文"></input>
+            </td>
+            <td>
+                <input id="english" class="style0"  placeholder=" Paste English"></input>
+            </td>
+            <td>
+<!--                <button id="googleTrans" class="font-weight-bolder btn btn-lg btn-warning btn-outline-dark">翻譯</button>-->
+                <div id="google_translate_element"></div>
+                <script type="text/javascript">
+                    function googleTranslateElementInit() {
+                      new google.translate.TranslateElement({pageLanguage: 'zh-tw'}, 'google_translate_element');
+                    }
+                </script>
+
+                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <div id="trans_en" class="style1">Thành ngữ, tục ngũ là sản phẩm của con người ngày xưa đúc kết kinh nghiệm trong sản xuất và đời sống. Hầu hết chúng đều dễ hiểu, một vài câu giải thích những chân lý thực tế nhất trong cuộc sống.
+Người xưa có một câu liên quan mật thiết đến người già là: “50 không xây nhà, 60 không trồng cây, 70 không may áo”, suy cho cùng cũng có lý. Lý do là gì? Hãy xem ý nghĩa của từng ý một nhé!</div>
+            </td>
+            <td>
+                <div id="trans_tw" class="style1">Majorca Daily Bulletin viết, hai người đàn ông vốn là những cái tên nổi tiếng ở quê nhà, đã gặp cô gái người Anh ở một nhà hàng tại Andratx (một đô thị trên đảo Mallorca, Tây Ban Nha). Sau đó họ đưa cô gái quay lại khách sạn đang ở và thực hiện cưỡng bức. Cô gái đã bỏ trốn khỏi hiện trường vụ việc và quay lại nhà hàng báo cho người cô của mình. Người này đã liên hệ với cảnh sát ngay lập tức.</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="trans_vi_1" class="style1">政治人物論文涉嫌抄襲事件再添一筆。台北市議員王鴻薇爆料，民進黨提名桃園市長參選人、現任新竹市長林智堅，二○○八年在中華大學發表的碩士論文「以ＴＣＳＩ模式評估國內某科學園區之週邊居民滿意度」，涉嫌抄襲同年六月新竹科學園區的「以ＴＣＳＩ模式評估新竹科學工業園區之週邊居民滿意度」期末報告書。</div>
+            </td>
+            <td>
+                <div id="trans_vi_2" class="style1">推开窗户有大大的露台，就能看到远处连绵的山峦，层峦叠嶂，起起伏伏。夏时来临，目之所及都是郁郁葱葱的茂密树林，不多一分，不减一寸，绿的刚刚好。我想，许巍唱的诗和远方大抵就是这样的意境。这里是途家济南花筑·柒舍的观景套房。
+　　</div>
+            </td>
+        </tr>
+    </table>
+
+{% endblock %}
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base/single_object_list.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/kpi/pm806.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/datagrid-filter.js' %}"></script>
+{% endblock %}
+
+{% block process_component %}
+{% endblock %}
+
+{% block east_region %}
+    <div data-options="region:'east',split:true" style="width:100%">
+       {% block east %}
+        <div style="width:100%; height: 100%">
+            {% component name="dg"
+                         config=main_dg_config
+                         node_id='main_dg'
+                         width='78%'
+                         height='88%'
+            %}
+        </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+    var currentFactory = "{{factory.id}}";
+{% endblock %}

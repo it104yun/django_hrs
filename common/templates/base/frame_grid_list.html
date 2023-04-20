@@ -1,0 +1,40 @@
+{% extends 'base/frame_grid_layout.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load component_tags %}
+{% block title %}{{title}}{% endblock %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/page/single_object_list.js' %}"></script>
+    {% block page_js %}
+    {% endblock %}
+{% endblock %}
+
+{% block center %}
+    <div class="d-flex">
+        <div class="pl-5 pt-3">
+            {% crispy form %}
+        </div>
+    </div>
+
+    {% block tabs %}
+    {% endblock %}
+
+     <!--中間下面的Grid-->
+    {% block center_extra %}
+    {% endblock %}
+
+
+    {% block center_footer %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block foot %}
+{% endblock %}
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+{% endblock %}

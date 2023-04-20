@@ -1,0 +1,43 @@
+html {
+    font-size: 15px;
+}
+.checkbox {
+    border: 0;
+    padding: 5px;
+}
+*[readonly] {
+    color: #666;
+}
+.f2 {
+    min-width: 380px;
+}
+.error {
+    border: 1px solid rgb(230, 125, 125);
+    padding: 2px;
+}
+.asteriskField {
+    font-weight: bold;
+}
+.m-btn:hover {
+    cursor: pointer;
+}
+.m-btn:disabled:hover {
+    cursor: default;
+}
+.nav.navbar {
+    border-bottom: 1px solid #ccc;
+}
+.btn:disabled {
+    background-color: #eeeeee;
+    border-color: #dddddd;
+    color: #dddddd;
+}
+
+.btn-secondary {
+    background-color: #93989c;
+    border-color: #93989c;
+}
+
+.datagrid-row-selected {
+    background-color: #b5dfff;
+}

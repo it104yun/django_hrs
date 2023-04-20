@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/skill_pdca/tt404.js' %}"></script>
+{% endblock %}
+
+{% block layout %}
+    <div id="matrix_master_dd" style="width: 100%;height: 100%;">
+        <div id="matrix_master_box" class="easyui-panel" title='TT404 技能盤點底稿產生' style="padding:25px;font-size: large;font-weight: bold;">  <!--上,後(右),下,前(左)-->
+            <label for="factory_select" style="padding: 10px;">公司 : </label>
+            <select id="factory_select" name="factory_select" class="easyui-combobox" style="width:20%;">
+                {% for item in all_factory %}
+                <option value="{{item.id}}">{{item.name}}</option>
+                {% endfor %}
+            </select>
+            <p style="padding: 10px;"></p>
+            <hr>
+            <div style="text-align:left;padding:10px;">
+                 <button id="matrix_gen_btn" class="easyui-linkbutton" style="width:10%;">產生</button>
+                 <span style="padding: 10px;"></span>
+                 <button id="matrix_del_btn" class="easyui-linkbutton" style="width:10%;" hidden>收回</button>
+            </div>
+       </div>
+    </div>
+{% endblock %}
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+{% endblock %}

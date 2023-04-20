@@ -1,0 +1,335 @@
+{% extends 'base/three_grid_list.html' %}
+{% load component_tags %}
+{% load static %}
+
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/kpi/pm208.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+{% endblock %}
+
+{% block center_extra %}
+    {% component name="dg"
+                 config=main_dg_config
+                 node_id='main_dg'
+                 height='390px'
+    %}
+{% endblock %}
+
+{% block main_search %}
+{% endblock %}
+
+{% block east %}
+           <p>
+           <div>
+                <label for="searchYear">年度</label>
+                <input id='searchYear' class="easyui-textbox text-center"   name="searchYear" style="width:50px">
+                
+<!--                <button  id="east_search" class="btn-sm btn-dark btn btn-outline-warning tooltip easyui-linkbutton"  data-options="iconCls:'icon-search'"  style="width:45px"><b>搜尋</b>-->
+                <button  id="east_search" class="easyui-linkbutton"  data-options="iconCls:'icon-search'"><b>搜尋</b>
+<!--                    <span class="tooltiptext">顯示全年度有指標的月份</span>-->
+                </button>
+           </div>
+           <p>
+            {% component name="dg"
+                     config=metrics_setupDate_dg_config
+                     node_id='metrics_setupDate_dg'
+                     height='585px'
+            %}
+
+{% endblock %}
+
+{% block north %}
+        <div class="container"  style="display: inline-block;text-align:left;margin: 0;padding: 0">
+          <div class="row">
+            <div class="col">
+                {% component name="dg"
+                     config=employee_info_easy_dg_config
+                     node_id='employee_info_easy_dg'
+                     height='220px'
+                     width='950px'
+               %}
+            </div>
+            <div class="col">
+                <p></p>
+                <button  id="south_search_open" class="easyui-linkbutton"  data-options="iconCls:'icon-search'" style="width:100px;"><b>開啟搜尋</b>
+                </button>
+            </div>
+              <div class="col">
+                  <br>
+                  <div id="south_search_dd" hidden="true">
+                     <div class="easyui-panel" title="" style="width:100%;height: auto;padding:0px;">
+                        <label for="searchWorkCode" style="padding-left: 15px;padding-top: 20px;">工號:</label>
+                        <input id='searchWorkCode' class="easyui-textbox text-center"   name="searchWorkCode" style="width:70%"><br>
+                        <label for="searchChiName" style="padding-left: 15px;padding-top: 20px;">姓名:</label>
+                        <input id='searchChiName' class="easyui-textbox text-center"   name="searchChiName" style="width:70%"><br>
+                        <label for="searchDept" style="padding-left: 15px;padding-top: 20px;">部門:</label>
+                        <input id='searchDept' class="easyui-textbox text-center"   name="searchDept" style="width:70%">
+                                                <hr>
+                        <div style="text-align:center;padding-bottom: 20px;">
+                         <button  id="south_search_sumit" class="easyui-linkbutton"  style="width:20%">搜尋</button>
+                            <span style="padding-left: 30px;"></span>
+                         <button  id="south_search_clear" class="btn-sm btn-dark btn btn-outline-warning tooltip" style="width:20%">清除</button>
+                        </div>
+                     </div>
+                </div>
+              </div>
+          </div>
+        </div>
+{% endblock %}
+
+
+
+<!-- 因應，複製/匯入按鈕 而增加的Area  ------------------------------------------------------------------------------------Begin-->
+{% block process_component %}
+    <div class="btn-group btn-block">
+         {% if perm.create == 'True' %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-primary'
+                         btn_node_id='new_btn'
+                         btn_text=' 建立新資料 '
+            %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-success'
+                         btn_node_id='create_btn'
+                         btn_text=' 新增 '
+            %}
+        {% endif %}
+        {% if perm.update == 'True' %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-success'
+                         btn_node_id='update_btn'
+                         btn_text=' 儲存更新 '
+            %}
+        {% endif %}
+        {% if perm.update == 'True' or perm.create == 'True' %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-warning'
+                         btn_node_id='cancel_btn'
+                         btn_text=' 取消 '
+            %}
+        {% endif %}
+        {% if perm.delete == 'True' %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-danger'
+                         btn_node_id='delete_btn'
+                         btn_text='刪除'
+            %}
+            <button class="btn btn-dark btn btn-outline-warning tooltip" id="batch_dele_btn"><b>批次刪除</b><br>
+                <span class="tooltiptext">工號指標複製至1~12個月<br>12個月指標都相同</span>
+            </button>
+                <div id="batch_dele_dd" hidden="True">
+<!--                    <form id="batch_dele_form" method="post" enctype="multipart/form-data" action="{{batch_dele_url}}">-->
+                        <div class="easyui-panel" title="" style="width:100%;height: auto;padding:0px;">
+<!--                            {% csrf_token %}-->
+                            <label for='deleWorkCode' style="padding-left: 20px;padding-top: 30px;">工號:</label>
+<!--                            <input id='deleWorkCode' class="easyui-textbox" name="deleWorkCode" style="width:80%" data-options="editable:false"><br>-->
+                            <!-- 以上改成checkbox -->
+                            <div id="deleWorkCode" style="width:85%" data-options="editable:false"></div><br>
+                            <label for="deleYear"  style="padding-left: 20px;padding-top: 30px;padding-bottom: 10px;">年度:</label>
+                            <input id='deleYear' class="easyui-textbox" name="deleYear"  value="{{workingYear}}"  style="width:15%"  required="true">
+                            <label for='deleMonthBegin' style="padding-left: 30px;">起始月份:</label>
+                            <input id='deleMonthBegin'  class="easyui-textbox" name="deleStart" style="width:15%;"  required="true">
+                            <label for='deleMonthEnd'  style="padding-left: 30px;">終止月份:</label>
+                            <input id='deleMonthEnd'  class="easyui-textbox" name="deleEnding" style="width:15%;"  required="true">
+                            <hr>
+                            <div style="text-align:center;padding-bottom: 20px;">
+                                <button  id="batch_dele_sumit" class="easyui-linkbutton" style="width:15%;">確定</button>
+                                <span style="padding-left: 50px;"></span>
+                                <button  id="batch_dele_clear" class="easyui-linkbutton" style="width:20%;">清除畫面</button>
+                            </div>
+                        </div>
+<!--                    </form>-->
+                </div>
+                <!--  確定批次刪除
+                <div id="submit_batch_dele_dd" hidden="True">
+                    <div class="easyui-panel" title="" style="width:100%;height: auto;text-align:center;">
+                        <div>
+                            <p  style="background-color:black ;color:Yellow;font: 24px bold;">整批刪除是很危險的動作</p>
+                            <p style="color:Red;font: 18px bold;">請再次確認您要刪除的範圍<br></br>再按下『確定刪除』</p>
+                        </div>
+                        <hr>
+                        <p  style="background-color:black ;color:Yellow;font: 18px bold;">刪除後，『資訊中心』也無法救回您刪除的資料，請務必僅慎</p>
+                        <hr>
+                        <div style="padding-bottom: 10px;">
+                            <button  id="submit_batch_dele_cancel" class="easyui-linkbutton" style="color: green;font-weight: bolder;">取消刪除</button>
+                            <span style="padding-left: 100px;"></span>
+                            <button  id="submit_batch_dele_sure" class="easyui-linkbutton" data-options="iconCls:'icon-cut'">確定刪除</button>
+                        </div>
+                   </div>
+                </div>
+                -->
+        {% endif %}
+
+
+        {% if perm.create == 'True' %}
+        <!--  展開 -->
+            <button class="btn btn-dark btn btn-outline-warning tooltip" id="expand_btn"><b>展開1~12月</b><br>
+                <span class="tooltiptext">工號指標複製至1~12個月<br>12個月指標都相同</span>
+            </button>
+           <div id="expand_dd" hidden="True">
+                    <form id="expand_form" method="post" enctype="multipart/form-data" action="{{ expand_url }}">
+                        <div class="easyui-panel" title="" style="width:100%;height: auto;padding:0px;">
+                            {% csrf_token %}
+                            <div style="font-size: larger;font-weight: bolder;color: darkred;">
+                                <hr>
+                                <ul>***來源工號符合以下條件，才會列出***
+                                    <li>年度/月份=0：有衡量指標而且該月"必定"滿100分</li>
+                                    <li>衡量指標
+                                        <ol>
+                                            <li><u style="color:red;">每一項</u>至少有二筆"計算方式"(得分0/最高配分)</li>
+                                            <li><u style="color:red;">每一項</u>"計算方式"的得分不可高於最高配分</li>
+                                        </ol>
+                                    </li>
+
+                                </ul>
+                                <hr>
+                            </div>
+                            <div style="padding-left: 30px;padding-top: 10px;">
+                                <span class="processStep">步驟１</span>
+                                <label for="expandYear" style="padding-left: 15px;">年度:</label>
+                                <input id='expandYear' class="easyui-textbox" name="expandYear"  value="{{workingYear}}"  style="width:15%"  required="true">
+                            </div>
+                            <div style="padding-left: 30px;padding-top: 20px;">
+                                <span class="processStep">步驟２</span>
+                                <label for="expandTo_WorkCode1" style="padding-left: 15px;">工號:</label>
+                                <input id="expandTo_WorkCode1" class="easyui-textbox" name="expandTo_WorkCode" style="width:50%"   required="true" data-options="editable:false">
+                                <input id="expandTo_WorkCode2" class="easyui-textbox" name="expandTo_WorkCode" style="width:1px" type="hidden"><br>
+                            </div>
+                            <hr>
+                            <div style="text-align:center;padding-bottom: 20px;">
+                                 <button  id="expand_sumit" class="easyui-linkbutton" id="expand_exec" style="width:80px">確定展開</button>
+                                 <span style="padding-left: 30px;"></span>
+                                 
+                                 <button  id="expand_clear" class="easyui-linkbutton" style="width:80px">清除</button>
+<!--                                                            <hr>-->
+<!--                            <span class="colorEffect" style="align-items: center;">***工號一定要選擇***<br>否則不會做任何事</span>-->
+                            </div>
+                       </div>
+                    </form>
+                </div>
+
+            <!--  複製 -->
+            <button class="btn btn-dark btn-outline-warning tooltip" id="copy_btn"><b>複製(月)</b><br>
+                <span class="tooltiptext">工號年月,指標複製<br>12個月都不相同</span>
+            </button>
+                <div id="copy_dd" hidden="True">
+                    <form id="copy_form" method="post" enctype="multipart/form-data" action="{{ copy_url }}">
+                        <div class="easyui-panel" title="" style="width:100%;height: auto;padding:0px;">
+                            {% csrf_token %}
+
+                            <div style="font-size: larger;font-weight: bolder;color: darkred;">
+                                <hr>
+                                <ul>***來源工號符合以下條件，才會列出***
+                                    <li>年度/月份：有衡量指標而且該月"必定"滿100分</li>
+                                    <li>衡量指標
+                                        <ol>
+                                            <li><u style="color:red;">每一項</u>至少有二筆"計算方式"(得分0/最高配分)</li>
+                                            <li><u style="color:red;">每一項</u>"計算方式"的得分不可高於最高配分</li>
+                                        </ol>
+                                    </li>
+
+                                </ul>
+                                <hr>
+                            </div>
+
+                            <div  style="padding-left: 10px;">
+                                <span class="processStep">步驟１</span>
+                                <span class="processStepX">來&nbsp;&nbsp;&nbsp;&nbsp;源</span>
+                            </div>
+                            <div  style="padding-left: 50px;padding-top: 0px;">
+                                <label for="copyFrom_val1">年度:</label>
+                                <input id='copyFrom_val1'  name="copyFrom_val1"  class="easyui-textbox" value="{{workingYear}}" style="width:15%;"  required="true">
+                                <label for="copyFrom_val2" style="padding-left: 10px;">月份:</label>
+                                <input id='copyFrom_val2'  class="easyui-textbox" name="copyFrom_val2" style="width:15%;"  required="true">
+                                <label for="copyFrom_id" style="padding-left: 10px;">工號:</label>
+                                <input id="copyFrom_id" class="easyui-textbox" name="copyFrom_id" style="width:40%;"   required="true" data-options="editable:false">
+                            </div>
+
+                            <div  style="padding-left: 10px;padding-top:30px;">
+                                <span class="processStep">步驟２</span>
+                                <span class="processStepX" >複製到</span>
+                            </div>
+                            <div  style="padding-left: 50px;padding-top: 0px;">
+                                <label for="copyToId1_1">工號:</label>
+                                <input id="copyToId1_1" class="easyui-textbox" name="copyToId" style="width:40%" data-options="editable:false">
+                                <label for="copyTo_val1_1" style="padding-left: 10px;">年度:</label>
+                                <input id="copyTo_val1_1" class="easyui-textbox" name="copyToVal1" style="width:15%" required="true">
+                                <label for="copyTo_val2_1" style="padding-left: 10px;">月份:</label>
+                                <input id="copyTo_val2_1" class="easyui-textbox" name="copyToVal2" style="width:12%" required="true">
+                            </div>
+
+                            <div  style="padding-left: 50px;padding-top: 10px;">
+                                <label for="copyToId1_2">工號:</label>
+                                <input id="copyToId1_2" class="easyui-textbox" name="copyToId" style="width:40%"  data-options="editable:false">
+                                <label for="copyTo_val1_2"  style="padding-left: 10px;">年度:</label>
+                                <input id="copyTo_val1_2" class="easyui-textbox" name="copyToVal1" style="width:15%">
+                                <label for="copyTo_val2_2"  style="padding-left: 10px;">月份:</label>
+                                <input id="copyTo_val2_2" class="easyui-textbox" name="copyToVal2" style="width:12%">
+                            </div>
+
+                            <div  style="padding-left: 50px;padding-top: 10px;">
+                                <label for="copyToId1_3">工號:</label>
+                                <input id="copyToId1_3" class="easyui-textbox" name="copyToId" style="width:40%" data-options="editable:false">
+                                <label for="copyTo_val1_3"  style="padding-left: 10px;">年度:</label>
+                                <input id="copyTo_val1_3" class="easyui-textbox" name="copyToVal1" style="width:15%">
+                                <label for="copyTo_val2_3"   style="padding-left: 10px;">月份:</label>
+                                <input id="copyTo_val2_3" class="easyui-textbox" name="copyToVal2" style="width:12%">
+                            </div>
+
+                            <div  style="padding-left: 50px;padding-top: 10px;">
+                                <label for="copyToId1_4">工號:</label>
+                                <input id="copyToId1_4" class="easyui-textbox" name="copyToId" style="width:40%" data-options="editable:false">
+                                <label for="copyTo_val1_4"  style="padding-left: 10px;">年度:</label>
+                                <input id="copyTo_val1_4" class="easyui-textbox" name="copyToVal1" style="width:15%">
+                                <label for="copyTo_val2_4"  style="padding-left: 10px;">月份:</label>
+                                <input id="copyTo_val2_4" class="easyui-textbox" name="copyToVal2" style="width:12%">
+                            </div>
+
+                            <div  style="padding-left: 50px;padding-top: 10px;">
+                                <label for="copyToId1_5">工號:</label>
+                                <input id="copyToId1_5" class="easyui-textbox" name="copyToId" style="width:40%" data-options="editable:false">
+                                <label for="copyTo_val1_5"  style="padding-left: 10px;">年度:</label>
+                                <input id="copyTo_val1_5" class="easyui-textbox" name="copyToVal1" style="width:15%">
+                                <label for="copyTo_val2_5"  style="padding-left: 10px;">月份:</label>
+                                <input id="copyTo_val2_5" class="easyui-textbox" name="copyToVal2" style="width:12%">
+                            </div>
+
+                            <div  style="padding-left: 50px;padding-top: 10px;">
+                                <label for="copyToId1_6">工號:</label>
+                                <input id="copyToId1_6" class="easyui-textbox" name="copyToId" style="width:40%" data-options="editable:false">
+                                <label for="copyTo_val1_6"  style="padding-left: 10px;">年度:</label>
+                                <input id="copyTo_val1_6" class="easyui-textbox" name="copyToVal1" style="width:15%">
+                                <label for="copyTo_val2_6"  style="padding-left: 10px;">月份:</label>
+                                <input id="copyTo_val2_6" class="easyui-textbox" name="copyToVal2" style="width:12%">
+                            </div>
+                            <hr>
+
+                            <div style="text-align:center;padding-bottom: 10px;">
+                                 <button  id="copy_submit" class="easyui-linkbutton" name="copy_submit" style="width:80px">確定複製</button>
+                                 <span style="padding-left: 30px;"></span>
+                                 <button  id="copy_clear" class="easyui-linkbutton" name="copy_clear" style="width:80px">清除</button>
+<!--                                <hr>-->
+<!--                            <span class="colorEffect" style="align-items: center;">***來源工號年月一定要選擇***<br>複製的工號年月至少要選擇1個<br>否則不會做任何事</span>-->
+                            </div>
+
+                       </div>
+                    </form>
+                </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+<!-- 因應，複製/匯入 而增加的Area  -----------------------------------------------------------------------------------Ending-->
+
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+    var userId = "{{user.username}}";
+    var workingYear = "{{workingYear}}";
+    var workingMonth = "{{workingMonth}}";
+    var perm = {{request.session.perm|safe}};
+    var is_director = "{{is_director}}";
+{% endblock %}

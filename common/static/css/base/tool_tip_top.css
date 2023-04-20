@@ -1,0 +1,68 @@
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-size: 15px;
+  color: yellow;
+  background-color: black;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: #555;
+  color: #fff;
+    font-size: small;
+    font-family: 標楷體;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text 與按鈕距離*/
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow - to the top*/
+.tooltip .tooltiptext::after  {
+   content: "";
+   position: absolute;
+   bottom: 100%;
+   left: 50%;
+   margin-left: -6px;   /* 箭頭大小 */
+   border-width: 6px;   /* 箭頭大小 */
+   border-style: solid;
+   border-color: transparent transparent #555 transparent;
+}
+
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.processStep {
+    font-size: x-large;
+    font-weight: bolder;
+    color: yellow;
+    background-color: black;
+}
+
+.processStepX {
+    font-size: large;
+    font-weight: bolder;
+    color: white;
+    background-color: navy;
+}

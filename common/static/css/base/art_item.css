@@ -1,0 +1,118 @@
+.logo{
+    -webkit-text-stroke: 0.5px white;
+    font-weight: bolder;
+    text-shadow: 2px 2px 4px grey;
+    color: black;
+}
+
+.topic{
+    -webkit-text-stroke: 1px white;
+    text-shadow: 2px 2px 4px grey;
+    color: black;
+}
+
+
+.blink {
+  -webkit-animation: 2s linear infinite condemned_blink_effect; /* for Safari 4.0 - 8.0 */
+  animation: 2s linear infinite condemned_blink_effect;
+}
+
+/* for Safari 4.0 - 8.0 */
+@-webkit-keyframes condemned_blink_effect {
+  0% {
+    visibility: hidden;
+  }
+  50% {
+    visibility: hidden;
+  }
+  100% {
+      color: red;
+    visibility: visible;
+  }
+}
+@keyframes condemned_blink_effect {
+  0% {
+    visibility: hidden;
+  }
+  50% {
+    visibility: hidden;
+  }
+  100% {
+      color: red;
+    visibility: visible;
+  }
+}
+
+.colorEffect {
+  -webkit-animation: 6s linear infinite condemned_color_effect; /* for Safari 4.0 - 8.0 */
+  animation: 6s linear infinite condemned_color_effect;
+}
+
+/* for Safari 4.0 - 8.0 */
+@-webkit-keyframes condemned_color_effect {
+  0% {
+      color: yellow;
+  }
+  50% {
+      color: green;
+      font-size: large;
+  }
+  100% {
+      color: red;
+      font-size: x-large;
+      font-weight: bolder;
+  }
+}
+
+.colorEffect_topic {
+  -webkit-animation: 6s linear infinite condemned_color_effect_topic; /* for Safari 4.0 - 8.0 */
+  animation: 6s linear infinite condemned_color_effect_topic;
+}
+
+/* for Safari 4.0 - 8.0 */
+@-webkit-keyframes condemned_color_effect_topic {
+  0% {
+      color: blue;
+      font-weight: lighter;
+  }
+  20% {
+      color: red;
+      font-weight: normal;
+  }
+  40% {
+      color: black;
+      font-weight: bold;
+  }
+  60% {
+      color: red;
+      font-weight: normal;
+  }
+
+  80% {
+      color: green;
+      font-weight: lighter;
+  }
+
+  100% {
+      color: red;
+      font-weight: normal;
+  }
+}
+
+
+
+
+@keyframes condemned_color_effect {
+  0% {
+      color: yellow;
+  }
+  50% {
+      color: green;
+      font-size: large;
+  }
+  100% {
+      color: red;
+      font-size: x-large;
+      font-weight: bolder;
+  }
+}

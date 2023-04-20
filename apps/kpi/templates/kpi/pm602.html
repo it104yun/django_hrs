@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.332/pdf.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/kpi/pm602.js' %}"></script>
+{% endblock %}
+
+{% block layout %}
+    <div id="report_dd" style="width:99.5%;">
+<!--        <form id="report_form" method="post" enctype="multipart/form-data" action="{{ report_url }}">-->
+            <div id="report_box" class="easyui-panel" title='績效列印-KPI年度目標' style="padding:50px 1px 1px 50px;">  <!--上,後(右),下,前(左)-->
+<!--                {% csrf_token %}-->
+                <h4>請輸入下列資料後，按下『產生報表』</h4>
+                <hr>
+                <input id='dept_id' class="easyui-textbox"  name="dept_id" style="width:25%;" label="部門別:">
+                <p>&nbsp;</p>
+                <input id='work_code_id1' class="easyui-textbox"  name="work_code_id1" style="width:25%;" label="工號-起:">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id='work_code_id2' class="easyui-textbox"  name="work_code_id2" style="width:25%;" label="工號-迄:">
+                 <p>&nbsp;</p>
+                <input id='date_yyyy' class="easyui-textbox"  name="date_yyyy" style="width:15%;" label="年度:">
+                 <p>&nbsp;</p>
+
+                <hr>
+                <div style="text-align:center;padding:5px 0">
+                     <button id="report_sumit" class="easyui-linkbutton" style="width:80px">產生報表</button>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <button id="clear" class="easyui-linkbutton" style="width:80px">清除</button>
+                </div>
+           </div>
+<!--        </form>-->
+    </div>
+    <div id="pdf-container"></div>
+{% endblock %}
+
+{% block bottom_script %}
+    var work_code_key = "{{user.username}}";
+    var workingYear = "{{workingYear}}";
+    var workingMonth = "{{workingMonth}}";
+{% endblock %}

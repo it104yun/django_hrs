@@ -1,0 +1,105 @@
+{% extends 'base/single_object_list.html' %}
+{% load component_tags %}
+{% load static %}
+
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/datagrid-detailview.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/kpi/pm402.js' %}"></script>
+{% endblock %}
+
+{% block center_extra %}
+    {% component name="dg"
+                 config=main_dg_config
+                 node_id='main_dg'
+                 height='600px'
+    %}
+{% endblock %}
+
+<!-- 因應，確認/取消確認按鈕 而增加的Area  ------------------------------------------------------------------------------------Begin-->
+{% block process_component %}
+    <div class="btn-group btn-block">
+        {% if perm.update == 'True' %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-success'
+                         btn_node_id='update_btn'
+                         btn_text=' 儲存更新 '
+            %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-warning'
+                         btn_node_id='cancel_btn'
+                         btn_text=' 取消 '
+            %}
+            <!--  送出 -->
+            <button class="btn btn-dark btn btn-outline-warning tooltip" id="submit_btn"><b>送出</b><br>
+                <span class="tooltiptext">確認後,主管可看到</span>
+            </button>
+               <div id="submit_dialog"></div>
+        {% endif %}
+    </div>
+        <div id="alert_dd" hidden="True">
+            <div class="easyui-panel" title="" style="width:100%;height: auto;text-align:center">
+                <h4 id="mail_success" name="mail_success"  style="padding:10px;color:white;font: 24px bloder white;letter-spacing:3px;background-color: darkblue;" type="hidden"></h4>
+                <h3 id="mail_fail"   name="mail_fail" style="color:white;font: 24px bloder yellow;letter-spacing: 3px;background-color: darkred;" type="hidden"></h3>
+                <h2 id="send_fail" name="send_fail" style="background: navy;color: red;font-weight: bolder" type="hidden"></h2>
+                <hr>
+                <div style="text-align:center;padding:5px 0">
+                     <button  id="msg_sure" class="easyui-linkbutton"  style="width:100px">確&nbsp;&nbsp;定</button>
+                </div>
+           </div>
+        </div>
+
+    <div id="alert_mtms" title="『績效管理系統』在『會議管理系統』自動抓取時,找不到您的資料" style="width: 520px;height: 280px;padding: 15px;" hidden>
+        <p><a href='http://mtms.tiongliong.com/'><h3><u>http://mtms.tiongliong.com/</u></h3></a><br><h4 style="color:red;font-weight: bolder;">請確認資料是否存在會議管理系統</h4><h5>*說明：點選上列網址,登入成功後,進入下面路徑查詢<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查詢 / KPI.BSC分數查詢</h5></p>
+        <h4 style="color:red;font-weight: bolder;">***因抓取不到,加減分數,將設為0分***</h4>
+    </div>
+    {% endblock %}
+<!-- 因應，確認/取消確認按鈕 而增加的Area  -----------------------------------------------------------------------------------Ending-->
+
+
+{% block main_search %}
+{% endblock %}
+
+
+{% block east_region %}
+    <div data-options="region:'east',split:true" style="width:15%">
+        {% block east %}
+            <div>
+                <label for="searchYear">&nbsp;&nbsp;年度&nbsp;</label>
+                <input id='searchYear' class="easyui-textbox text-center"   name="searchYear" style="width:50px">
+                &nbsp;
+                <button  id="search_sumit" class="btn-sm btn-dark btn btn-outline-warning tooltip"  id="search_exec" style="width:45px"><b>搜尋</b>
+                    <span class="tooltiptext">顯示全年度有指標的月份</span>
+                </button>
+           </div>
+            {% component name="dg"
+                     config=metrics_setupDate_dg_config
+                     node_id='metrics_setupDate_dg'
+                     height='800px'
+            %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}};
+    var work_code_key = "{{user.username}}";
+    var workingYear = "{{workingYear}}";
+    var workingMonth = "{{workingMonth}}";
+    var last_status = "{{last_status}}";           //此page『允許編輯』的上一狀態
+    var next_status = "{{next_status}}";           //此page『允許編輯』的下一狀態
+    var status_new = "{{status_new}}";            //新增,編輯的狀態
+    var status_submit = "{{status_submit}}";      //
+    var status_recall = "{{status_recall}}";      //
+
+    var perm = {{request.session.perm|safe}};
+    var director = "{{director}}";
+    var eval_class = "{{eval_class}}";
+    var is_director = "{{is_director}}";
+{% endblock %}
+
+
+
+

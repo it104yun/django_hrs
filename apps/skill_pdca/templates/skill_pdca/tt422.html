@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/skill_pdca/tt422.js' %}"></script>
+    <style>
+        .like-easyui-textbox {
+          position: relative;
+          border: 1px solid #95B8E7;
+          background-color: #fff;
+          vertical-align: middle;
+          display: inline-block;
+          overflow: hidden;
+          white-space: nowrap;
+          margin: 0;
+          padding: 0;
+          -moz-border-radius: 5px 5px 5px 5px;
+          -webkit-border-radius: 5px 5px 5px 5px;
+          border-radius: 5px 5px 5px 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block layout %}
+    <div id="matrix_detail_export_dd"  style="width: 100%;height: 100%;">
+        <div id="matrix_detail_box" class="easyui-panel" title='TT422 技能盤點資料匯出' style="padding:25px;font-size: large;font-weight: bold;">  <!--上,後(右),下,前(左)-->
+            <label for="factory_select" style="padding: 10px;">公&nbsp;&nbsp;司&nbsp;&nbsp;別：</label>
+            <select id="factory_select" name="factory_select" class="easyui-combobox" style="width:20%;height: 33px;">
+                {% for item in all_factory %}
+                <option value="{{item.id}}">{{item.name}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="month_start" style="padding: 10px;">起始年月：</label>
+            <input id="month_start" name="month_start" type="month"class="like-easyui-textbox" style="height: 33px;"/>
+            <br>
+            <label for="month_end" style="padding: 10px;">截止年月：</label>
+            <input id="month_end" name="month_end" type="month" class="like-easyui-textbox"  style="height: 33px;"/>
+            <br>
+            <label for="jobtitle_select" style="padding: 10px;">職務名稱：</label>
+            <select id="jobtitle_select" name="jobtitle_select" class="easyui-combobox" style="width:30%;height: 33px;">
+<!--            <select id="jobtitle_select" name="jobtitle_select" style="width:30%;" multiple>-->
+<!--                {% for job in job_titles %}-->
+<!--                    <option value="{{job.code}}">{{job.code}} {{job.name}}</option>-->
+<!--                {% endfor %}-->
+            </select>
+            <hr>
+            <button id="matrix_detail_export_btn" class="easyui-linkbutton" style="width:10%;height: 35px;letter-spacing: 10px;">匯出</button>
+       </div>
+    </div>
+{% endblock %}
+
+{% block bottom_script %}
+    var job_titles = {{job_titles|safe}};
+{% endblock %}

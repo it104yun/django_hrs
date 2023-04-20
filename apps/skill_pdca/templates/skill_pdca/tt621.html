@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="{% static 'js/skill_pdca/tt621.js' %}"></script>
+    <style>
+       th, td {
+          padding: 10px;
+        }
+       .style1 {
+           width: 650px;
+           height:425px;
+           background-color: cornsilk;
+           border: 10mm ridge rgba(50, 170, 255, .6);
+       }
+    </style>
+{% endblock %}
+
+{% block layout %}
+    <table>
+        <tr>
+            <td>
+               <div id="main" class="style1"></div>
+            </td>
+            <td>
+                <div id="main1" class="style1"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="main2" class="style1"></div>
+            </td>
+            <td>
+                <div id="main3" class="style1"></div>
+            </td>
+        </tr>
+    </table>
+
+{% endblock %}
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+{% endblock %}

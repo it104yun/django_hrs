@@ -1,0 +1,23 @@
+{% load static %}
+{% load i18n %}
+
+<html lang="zh-Hant">
+    <head>
+        <title>PDF檔,開啟,下載</title>
+        <style></style>
+    </head>
+<body>
+    <script>
+        var download_file = "{{filename}}";
+        var filename = download_file.split("/");
+        var tmpa = document.createElement("a");
+        var filename_locate = 3;
+        if (filename[2]=="reports") filename_locate=4;
+        tmpa.download =  filename[filename_locate] || "下載";         //下載後要存的檔名
+        tmpa.href = download_file;                     //從主機何處下載
+        tmpa.click();                                  //按下下載按紐
+        window.open(download_file,target = '_self');
+    </script>
+</body>
+
+</html>

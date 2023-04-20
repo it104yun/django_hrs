@@ -1,0 +1,20 @@
+{% load i18n %}
+{% if factories|length > 1 %}
+    <select id="factory_select">
+        {% for item in factories %}
+        <option value="{{item.factory__id}}" 
+            {% if item.factory__id == factory.id %} selected {% endif %}
+            >
+            {{item.factory__name}}
+        </option>
+        {% endfor %}
+    </select>
+    <button id="change_factory_btn"
+            class="ml-1 btn btn-sm btn-outline-light text-danger">{% trans 'Change' %}</button>
+{% else %}
+    {% for item in factories %} 
+    {{ item.factory__name }}
+    {% endfor %}
+{% endif %}
+
+

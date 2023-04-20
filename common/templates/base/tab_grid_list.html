@@ -1,0 +1,84 @@
+{% extends 'base/tab_grid_layout.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load component_tags %}
+{% block title %}{{title}}{% endblock %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/page/single_object_list.js' %}"></script>
+    {% block page_js %}
+    {% endblock %}
+{% endblock %}
+
+{% block center %}
+<!--remark at 2021/09/15  每個tab都有datagrid, 而且都可online edit, 按鈕改做在每tab或每筆資料上
+　    <div class="nav navbar justify-content-start d-flex">
+        <div id="form_btn" class="col-12">
+        {% with perm=request.session.perm %}
+            {% block process_component %}
+                 {% if perm.create == 'True' %}
+                    {% component name="btn"
+                                 btn_css_class='btn btn-sm btn-outline-primary'
+                                 btn_node_id='new_btn'
+                                 btn_text='建立新資料'
+                    %}
+                    {% component name="btn"
+                                 btn_css_class='btn btn-sm btn-outline-primary'
+                                 btn_node_id='create_btn'
+                                 btn_text='新增'
+                    %}
+                {% endif %}
+                {% if perm.update == 'True' %}
+                    {% component name="btn"
+                                 btn_css_class='btn btn-sm btn-outline-primary'
+                                 btn_node_id='update_btn'
+                                 btn_text='儲存更新'
+                    %}
+                {% endif %}
+                {% if perm.update == 'True' or perm.create == 'True' %}
+                    {% component name="btn"
+                                 btn_css_class='btn btn-sm btn-outline-primary'
+                                 btn_node_id='cancel_btn'
+                                 btn_text='取消'
+                    %}
+                {% endif %}
+                {% if perm.delete == 'True' %}
+                    {% component name="btn"
+                                 btn_css_class='btn btn-sm btn-outline-primary'
+                                 btn_node_id='delete_btn'
+                                 btn_text='刪除'
+                    %}
+                {% endif %}
+            {% endblock %}
+        {% endwith %}
+        </div>
+    </div>
+-->
+
+    <div class="d-flex">
+        <div class="pl-5 pt-3">
+            {% crispy form %}
+        </div>
+    </div>
+
+    {% block tabs %}
+    {% endblock %}
+
+     <!--中間下面的Grid-->
+    {% block center_extra %}
+    {% endblock %}
+
+
+    {% block center_footer %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block foot %}
+{% endblock %}
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+{% endblock %}

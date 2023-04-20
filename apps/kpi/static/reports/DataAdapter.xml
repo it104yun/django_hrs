@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>New Data Adapter 1</name><driver>org.postgresql.Driver</driver><username>DjangoHRS</username><password>1qa=2wsx</password><savePassword>true</savePassword><url>jdbc:postgresql://localhost:5432/database</url><database></database><serverAddress></serverAddress></jdbcDataAdapter>

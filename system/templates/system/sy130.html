@@ -1,0 +1,30 @@
+{% extends 'base/single_object_list.html' %}
+{% load component_tags %}
+{% load static %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/system/sy130.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/datagrid-filter.js' %}"></script>
+{% endblock %}
+
+{% block center_extra %}
+    {% component name="dg"
+                 config=main_dg_config
+                 node_id='main_dg'
+    %}
+{% endblock %}
+
+{% block east %}
+    <div style="height: 90%;">
+        {% component name="dg"
+                     config=user_dg_config
+                     node_id='user_dg'
+        %}
+    </div>
+{% endblock %}
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+    var allPrograms = {{all_program|safe}}
+{% endblock %}

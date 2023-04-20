@@ -1,0 +1,88 @@
+{% extends 'base/tab_grid_list.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/skill_pdca/tt407.js' %}"></script>
+    <style>
+        .datagrid-cell-group
+        {
+            font-size: large;
+            font-weight: bolder;
+            color:navy;
+        }
+
+        .note_table,th,td {
+              border: 1px solid DimGray;
+              border-collapse: collapse;
+              text-align: center;
+        }
+
+        .note_table_th {
+            height: 30px;
+            font-size: 13px;
+            background-color: DarkSlateGrey;
+            color: white;
+        }
+
+        /*.datagrid-htable {*/
+        /*   width : 100%;*/
+        /*}*/
+
+    </style>
+{% endblock %}
+
+    {% block center_extra %}
+            <div id="main-tab" class="easyui-tabs"  data-options="toolPosition:'right',tools:'#tab-tools'" style="height:50%;">
+                {% for tab in tab_context_list %}
+                        <div id="{{ tab.job_title }}" name="{{ tab.job_title }}" title="{{ tab.job_title_desc }}" style="display:none;" >
+                             {% component
+                                 name="dg"
+                                 config=tab.main_dg_config
+                                 node_id=tab.node_id
+                                 width='100%'
+                                 height='104%'
+                            %}
+                        </div>
+                {% endfor %}
+            </div>
+            <div id="tab-tools">
+                <a href="#" id="tab_edit" class="easyui-linkbutton" iconCls="icon-edit" hidden>關閉編輯</a>
+                <a href="#" id="tab_endEdit" class="easyui-linkbutton" iconCls="icon-cancel" hidden>關閉編輯</a>
+                <a href="#" id="tab_save" class="easyui-linkbutton" iconCls="icon-save">儲存</a>
+                <span style="padding-left: 5px;"></span>
+                <a href="#" id="submit_bpm" class="easyui-linkbutton" iconCls="icon-redo">送至BPM</a>
+                <span style="padding-left: 5px;"></span>
+            </div>
+            <div style="padding: 10px;"></div>
+            <table id="note_table" class="note_table" align="center">
+                    <tr  class="note_table_th" style="font-size: 16px;font-weight: bold;height: 30px;">
+                        <th width="80px" >圖 形</th>
+                        <th width="400px">說 明</th>
+                        <th width="150px" style="letter-spacing: 1px;">人員成熟度等級</th>
+                    </tr>
+                    {% for score in score_choices %}
+                        <tr style="background-color: lemonchiffon;height: 30px;font-size: 16px;">
+                            <td><img src="{% static score.image %}"></td>
+                            <td style="text-align: left;">{{ score.description }}</td>
+                            <td>{{ score.desc1 }}</td>
+                        </tr>
+                    {% endfor %}
+            </table>
+    {% endblock %}
+
+
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}};    //safe:禁用變量的自動轉義
+    var currentFactory = "{{factory.id}}";
+    var tabs = {{tabs|safe}};
+    var tab_fields = {{tab_fields|safe}};
+    var score_choices_x = {{score_choices_x|safe}};
+    var study_choices = {{study_choices|safe}};
+    var rotation_jobs = {{rotation_jobs|safe}};
+    var ee_jobs= {{ee_jobs|safe}};
+    var userId = "{{user.username}}";
+{% endblock %}

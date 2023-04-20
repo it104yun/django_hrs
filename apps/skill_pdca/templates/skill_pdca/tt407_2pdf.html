@@ -1,0 +1,130 @@
+{% load static %}
+{% load i18n %}
+
+<html lang="zh-Hant">
+    <head>
+        <title>技能盤點表</title>
+        <style>
+            table, th, td {
+              height: 40px;
+              border: 1px solid DimGray;
+              border-collapse: collapse;
+              font-size: xx-small;
+              text-align: center;
+            }
+            .group {
+                font-size: 12px;
+                font-weight: bold;
+            }
+
+            .title_style { text-align: center;font-family: 微軟正黑體; font-weight: bolder;}
+            .cr_color { background-color: #FFDDCC;width: 22px;}
+            .ma_color { background-color: #DDEECC;width: 22px;}
+            .ge_color { background-color: #ffffCC;width: 22px;}
+            .pr_color { background-color: #BBffff;}
+            .xa_color { background-color: #F8F8F8; color:navy;}
+            .xb_color { background-color: #F8F8F8; color:navy;}
+        </style>
+    </head>
+<body>
+    <table style="display:inline;" >
+        <tr style="height: 15px;">
+            <td>圖形</td>
+            <td>說 明</td>
+            <td>人 員 成 熟 度 等 級</td>
+        </tr>
+        {% for score in score_choices %}
+            <tr style="height: 15px;">
+                <td style="width:50px;">{{ score.desc2 }}</td>
+                <td style="width:300px;">{{ score.description }}</td>
+                <td style="width:100px;">{{ score.desc1 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h1 style="display:inline;padding-left: 575px;" class="title_style">技能盤點表</h1>
+    {% for tab in tabs %}
+         {% if forloop.counter > 1 %}
+            <br>
+        {% endif %}
+        <h3 class="title_style">{{tab.job_title_desc_tree}}</h3>
+        <table style="border: 2px solid;">
+            <tbody>
+                    {% for fields in tab_fields %}
+                        {% if forloop.counter == forloop.parentloop.counter %}
+                             <tr>
+                                <td style="font-size: 6px;" rowspan="2" style="width: 10px;">NO.</td>
+                                <td style="font-size: 6px;" rowspan="2" style="width: 40px;">年</td>
+                                <td style="font-size: 6px;" rowspan="2" style="width: 20px;">月</td>
+                                <td rowspan="2" style="width: 80px;">部門</td>
+                                <td rowspan="2" style="width: 40px;">姓名</td>
+                                <td rowspan="2" style="width: 50px;">到職<br>日期</td>
+                                <td rowspan="2" style="width: 12px;">職<br>等</td>
+                                <td rowspan="2" style="width: 50px;">職<br>稱</td>
+
+                                {% for group in groups %}
+                                    {% if forloop.counter == forloop.parentloop.counter %}
+                                        <td colspan="{{group.cr_length}}" class="group cr_color">核心職能</td>
+                                        <td colspan="{{group.ma_length}}" class="group ma_color">管 理 職 能</td>
+                                        <td colspan="{{group.ge_length}}" class="group ge_color">一般職能</td>
+                                        {% if group.pr_length != 0 %}
+                                            <td colspan="{{group.pr_length}}" class="group pr_color">專 業 職 能</td>
+                                        {% endif %}
+                                        <td colspan="2" class="group xa_color">系統計算/判斷</td>
+                                        <td colspan="3" class="group xb_color">人力資源策略</td>
+                                    {% endif %}
+                                {% endfor %}
+
+                             </tr>
+                             <tr>
+                                {% for field in fields %}
+                                    {% with field_prefix=field.name|slice:"0:2" %}
+                                        {% if field_prefix == 'cr' %}
+                                            <td class="cr_color">{{ field.verbose_name }}</td>
+                                        {% elif field_prefix == 'ma' %}
+                                            <td class="ma_color">{{ field.verbose_name }}</td>
+                                        {% elif field_prefix == 'ge' %}
+                                            <td class="ge_color">{{ field.verbose_name }}</td>
+                                        {% elif field_prefix == 'pr' %}
+                                            <td class="pr_color">{{ field.verbose_name }}</td>
+                                        {% elif field_prefix == 'xa' %}
+                                            <td class="xa_color">{{ field.verbose_name }}</td>
+                                        {% elif field_prefix == 'xb' %}
+                                            <td class="xb_color">{{ field.verbose_name }}</td>
+                                        {% else %}
+                                            <td>{{ field.verbose_name }}</td>
+                                        {% endif%}
+                                    {% endwith %}
+                                {% endfor %}
+                             </tr>
+                        {% endif %}
+                    {% endfor %}
+
+                 {% for datas in tab_datas %}
+                    {% if forloop.counter == forloop.parentloop.counter %}
+                        {% for data in datas %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ data.year }}</td>
+                                <td>{{ data.month }}</td>
+                                <td>{{ data.dept_desc }}</td>
+                                <td>{{ data.chi_name }}</td>
+                                <td>{{ data.arrival_date | date:"Y/m/d"  }}</td>
+                                <td>{{ data.rank_desc }}</td>
+                                <td>{{ data.pos_desc }}</td>
+                            {% for key,val in data.items %}
+                                {% if forloop.counter >= 19 %}
+                                    {% if val != None %}
+                                        <td>{{ val }}</td>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+
+            </tbody>
+        </table>
+    {% endfor %}
+</body>
+</html>

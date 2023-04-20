@@ -1,0 +1,41 @@
+{% extends 'base/single_object_list.html' %}
+{% load component_tags %}
+{% load static %}
+
+
+
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/system/sy120.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/datagrid-filter.js' %}"></script>
+{% endblock %}
+
+{% block center_extra %}
+    {% component name="dg"
+                 config=main_dg_config
+                 node_id='main_dg'
+    %}
+{% endblock %}
+
+
+{% block east %}
+<!--        <div id='searchArea'>-->
+<!--            <label for="searchProgramID" style="padding-left: 10px;padding-top: 10px;" >程式:</label>-->
+<!--            <input id='searchProgramID' class="easyui-textbox text-center"   name="searchWorkCode" style="width:60%">-->
+<!--            <button  id="search_clear" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">清除</button>-->
+<!--            <button  id="east_search" class="easyui-linkbutton"  data-options="iconCls:'icon-search'"><b>搜尋</b></button>-->
+<!--        </div>-->
+        <div style="width:100%; height: 100%">
+            {% component name="dg"
+                         config=program_dg_config
+                         node_id='program_dg'
+            %}
+        </div>
+{% endblock %}
+
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+    var allUsers = {{all_user|safe}}
+{% endblock %}

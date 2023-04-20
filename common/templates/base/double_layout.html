@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block layout %}
+    <div class="layout easyui-layout" data-options="fit:true">
+        <div data-options="region:'center', split:true" style="width:60%">
+            {% block center %}
+            {% endblock %}
+        </div>
+        <div data-options="region:'east',split:true" style="width:30%">
+            {% block east %}
+            {% endblock %}
+        </div>
+        <div data-options="region:'south',split:true" style="height:20%">
+            {% block south %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

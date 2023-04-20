@@ -1,0 +1,201 @@
+{% load static %}
+{% load i18n %}
+
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ system_name|default:'TLC' }} | {% trans 'Login' %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base/art_item.css' %}"/>
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/base/new_alert_box.css' %}"/>-->
+
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.easyui.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready( function (){
+                jQuery.extend({
+                    alertWindow: function (e, n) {
+                        var e = e, r;
+                        n === undefined ? r = "#00a8b7" : r = n;
+                        if ($("body").find(".alertWindow1").length === 0) {
+                            var i='<div class="alertWindow1" style="width: 100%;height: 100%; background:rgba(0,0,0,0);position: fixed; left:330px; top: 75px; z-index: 9999;"><div  style="width: 360px; height: 80px;background: #FFF;margin: 300px auto;border: 2px solid #CFCFCF;">'+'<div  style="width: inherit;height: 20px;">'+'<div class="alertWindowCloseButton1" style="float: right; width: 10px; height: 30px;margin-right:5px;font-family:\'microsoft yahei\';color:'+r+';cursor: pointer;"></div>'+"</div>"+'<div id="successImg" class="alertWindowTitle" style="margin-top:10px;text-align:center;font-size: 18px;font-weight: normal;color: '+r+';">'+"</div>"+'<div style="width:360px;height: 40px;text-align:center;font-size: 20px;color: red;margin-top:10px;">'+e+"</div>"+"</div>"+"</div>";
+                            $("body").append(i);
+                            var s = $(".alertWindow1");
+                            setTimeout(function () {
+                                s.hide()
+                            }, n);
+                        } else {
+                            $(".alertWindowContent").text(e), $(".alertWindow1").show(), setTimeout(function () {
+                                $(".alertWindow1").hide()
+                            }, n);
+                        }
+                    }
+                })
+
+
+                 $("#id_username").keypress( function (e){
+                    var valueCapsLock = e.keyCode ? e.keyCode:e.which;
+                    // var valueShift = e.shiftKey ? e.shiftKey:((valueCapsLock == 16 ) ? true : false );
+                    // if (((valueCapsLock >= 65 && valueCapsLock <= 90 ) && !valueShift) ||
+                    //     ((valueCapsLock >= 97 && valueCapsLock <= 122 ) && valueShift) ||
+                     if (((valueCapsLock >= 65 && valueCapsLock <= 90 )) ||
+                        ((valueCapsLock >= 48 && valueCapsLock <= 57 ) )
+                    )
+                    {
+                        return true;
+                    }
+                    else {
+                        // alert('*帳號請用大寫英文字母+阿拉伯數字*\n\n  請按下Caps Lock轉成大寫  \n  帳號不會有特殊符號');
+                        jQuery.alertWindow('*帳號請用大寫英文字母+阿拉伯數字*',1500);
+                        return false;
+                    }
+                });
+
+                $("#id_language").hide();
+
+                $("#choice_lang").change( function (e) {
+                    // var button = document.getElementById("set_language_code");
+                    // if ( button.disabled == false ) { button.click(); }
+                    var browser_language = window.navigator.language;
+                    var choice_language = $("#choice_lang").find(":selected").val();
+                    // alert("瀏覽器的語言是:"+browser_language+"\n\n"+"您選取的語言是:"+choice_language);
+                    $("#id_language").val(choice_language);
+                    switch ( choice_language ) {
+                        case 'zh-hant':
+                            // alert("zh-hant");
+                            $("#system_name").text("績效管理 / 技能盤點 / 工作事項");
+                            $("#factory_label").text("公司:");
+                            $("#username_label").text("帳號:");
+                            $("#password_label").text("密碼:");
+                            $("#login_btn").val("登入");
+                            $("#forget_password_btn").text("忘記密碼");
+                            break;
+                        case 'vi':
+                            // alert("vi");
+                            $("#system_name").text("Quản lý hiệu suất / Thống kê kĩ năng / Hạng mục công việc");
+                            $("#factory_label").text("Công ty :");
+                            $("#username_label").text("tài khoản :");
+                            $("#password_label").text("mật khẩu :");
+                            $("#login_btn").val("đăng nhập");
+                            $("#forget_password_btn").text("Quên mật khẩu");
+                            break;
+                        case 'en':
+                            // alert("en");
+                            $("#system_name").text("Performance Management/Skills Inventory/Work Matters");
+                            $("#factory_label").text("COMPANY:");
+                            $("#username_label").text("USERNAME:");
+                            $("#password_label").text("PASSWORD:");
+                            $("#login_btn").val("LOGIN");
+                            $("#forget_password_btn").text("FORGET PASSWORD");
+                            break;
+                        default:
+                    }
+                });
+            })
+
+    </script>
+</head>
+<body>
+
+<!--<div>  <a id="set_language_code" href="{% url 'set_language_code' %}" hidden></a>　</div>-->
+
+<!-- 用Google 翻譯全網站 -->
+<!--    <div id="google_translate_element" style="padding-left: 10px;"></div>-->
+<!--    <script type="text/javascript">-->
+<!--        var lang_string = "{{all_lang}}";-->
+<!--        function googleTranslateElementInit() {-->
+<!--          new google.translate.TranslateElement({-->
+<!--              pageLanguage: 'auto',-->
+<!--              autoDisplay: false,-->
+<!--              includedLanguages : "{{all_lang}}",-->
+<!--              layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,-->
+<!--          }, 'google_translate_element');-->
+<!--        }-->
+<!--    </script>-->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<form action="" method="post" style="font-size: 15.5px;color:black;">
+    <div  style="padding-top: 5px;">　<!-- 放在角落, 確定營幕如何縮小都看的到（兼顧筆電與桌機） -->
+            <div id="choice_lang" name="choice_lang" style="display: inline;">
+                <select style="width: 110px;">
+                    {% for lang in choice_language %}
+                        <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+    　      <label for="choice_lang" style="display: inline;font-size: small;color: blue;">請選取語言/Vui lòng chọn ngôn ngữ </label>
+    </div>
+</form>
+    <div class="wrapper m-0 p-0" style="width:100vw;height:100vh;">
+<!--        <div class="position-absolute"   style="min-width:100px;max-width:450px;top:30%;left:44%;margin-left:-200px;margin-top:-200px;">-->
+        <div class="position-absolute"   style="min-width:100px;top:37%;left:45%;margin-left:-200px;margin-top:-200px;">
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                <div class="alert alert-warning">
+                    {{error}}
+                </div>
+                {% endfor %}
+            {% endif %}
+            <div class="text-primary shadow p-sm-4 bg-light  rounded-lg">
+                <div class="mb-4" style="text-align: center;">
+                        <span class="topic" style="font-family: 'Arial Black';font-size: 36px;font-weight: bolder;color:black;">PMS</span>
+                        <span style="font-size: 16px;font-weight: bolder;color:black;" id="system_name">績效管理/技能盤點/工作事項</span>
+                </div>
+                <form action="" method="post" style="font-size: 15.5px;color:black;">
+                    {% csrf_token %}
+                    <hr>
+                    {% for field in form %}
+                        <div class="form-group row" style="height: 30px;">
+                            <div class="col-sm-3 col-form-label">
+<!--                                {{ field.label_tag }}-->
+                                {% ifequal field.name "username" %}
+                                    <label id="username_label">帳號:</label>
+                                {% endifequal %}
+                                {% ifequal field.name "password" %}
+                                    <label id="password_label">密碼:</label>
+                                {% endifequal %}
+                                {% ifequal field.name "factory" %}
+                                    <label id="factory_label">公司:</label>
+                                {% endifequal %}
+                            </div>
+                            <div class="col-sm-2">
+                                    {{ field }}
+                            </div>
+                        </div>
+                    {% endfor %}
+<!--                    <div class="form-group row" style="height: 30px;">-->
+<!--                            <label for="id_factory" class="col-sm-5 col-form-label" id="factory_label">公司:</label>-->
+<!--                                    <div class="col-sm-5" id="id_factory">{{ form.factory }}</div>-->
+<!--                    </div>-->
+<!--                    <div class="form-group row" style="height: 30px;">-->
+<!--                            <label for="id_username" class="col-sm-5 col-form-label" id="username_label">帳號:</label>-->
+<!--                                <div class="col-sm-5" id="id_username">{{ form.username }}</div>-->
+<!--                    </div>-->
+<!--                    <div class="form-group row" style="height: 30px;">-->
+<!--                            <label for="id_password" class="col-sm-5 col-form-label" id="password_label">密碼:</label>-->
+<!--                                 <div class="col-sm-5" id="id_password">{{ form.password }}</div>-->
+<!--                    </div>-->
+                    <hr>
+                    <div>
+                        <input type="submit" class="btn btn-primary"  id="login_btn" value="{% trans 'Login' %}">
+<!--                        <input type="submit" class="btn btn-primary"  value="{% trans 'Login' %}">-->
+                        <a class="text-primary btn btn-outline-warning" href="http://ldap-python.tiongliong.com/ldapApp/reset_pwd/?next={{ request.get_host }}{% url 'login' %}" id="forget_password_btn">{% trans 'Forget My Password' %}</a>
+                    </div>
+                </form>
+            </div>
+    </div>
+
+<!--        <div class="fixed-bottom" style="text-align: center;">-->
+<!--            <span class="rounded" style="padding-bottom: 10px;min-width:450px;max-height:30px;color: white;background:black;letter-spacing: 2px;">-->
+<!--                <hr>-->
+<!--                ●提醒您 : 為確保網站瀏覽品質，請使用Google瀏覽器( Chrome<img src="{%static 'img/chrome.png' %}" width="25px" style="vertical-align:text-bottom"> )瀏覽網頁●-->
+<!--                <br>-->
+<!--                ●若無法完全看見網頁內容，字體請調整至75~100%大小 : <span style="color: yellow;">Ctrl+滑鼠滾輪(或鍵盤上下鍵)往下(縮小)，往上(放大)</span>●-->
+<!--            </span>-->
+<!--        </div>-->
+    </div>
+</body>
+</html>

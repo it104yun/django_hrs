@@ -1,0 +1,142 @@
+{% extends 'base/single_object_list.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/kpi/pm004.js' %}"></script>
+{% endblock %}
+{% block process_component %}
+    <div class="btn-group btn-block">
+         {% if perm.create == 'True' %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-primary'
+                         btn_node_id='new_btn'
+                         btn_text=' 建立新資料 '
+            %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-success'
+                         btn_node_id='create_btn'
+                         btn_text=' 新增 '
+            %}
+        {% endif %}
+        {% if perm.update == 'True' %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-secondary'
+                         btn_node_id='update_btn'
+                         btn_text=' 儲存更新 '
+            %}
+        {% endif %}
+        {% if perm.update == 'True' or perm.create == 'True' %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-warning'
+                         btn_node_id='cancel_btn'
+                         btn_text=' 取消 '
+            %}
+        {% endif %}
+        {% if perm.delete == 'True' %}
+            {% component name="btn"
+                         btn_css_class='btn btn-outline-danger'
+                         btn_node_id='delete_btn'
+                         btn_text=' 刪除 '
+            %}
+        {% endif %}
+
+
+        {% if perm.create == 'True' %}
+
+           <!--  複製 -->
+            <button class="btn btn-dark btn-outline-warning" id="copy_btn">複製</button>
+                <div id="copy_dd" hidden="True">
+                    <form id="copy_form" method="post" enctype="multipart/form-data" action="{{ copy_url }}">
+                        <div class="easyui-panel" title="" style="width:100%;height: auto;padding:0px;">
+                            {% csrf_token %}
+                            <label for="copyFrom_id"  style="padding-left: 15px;padding-top: 15px;">來源工號:</label>
+                            <input id='copyFrom_id' class="easyui-textbox"  name="copyFrom_id" style="width:60%" required="true"><br>
+
+                             <label for="copyToId1_1"  style="padding-left: 35px;padding-top: 20px;">工號1:</label>
+                            <input class="easyui-textbox" id="copyToId1_1"  name="copyToId" style="width:30%" required>
+                            <label for="copyToVal1_1"  style="padding-left: 20px;">姓名1:</label>
+                            <input class="easyui-textbox" id="copyToVal1_1"  name="copyToVal1" style="width:30%;" required><br>
+
+                            <label for="copyToId1_2"  style="padding-left: 35px;padding-top: 20px;">工號2:</label>
+                            <input class="easyui-textbox" id="copyToId1_2"  name="copyToId" style="width:30%">
+                            <label for="copyToVal1_2"  style="padding-left: 20px;">姓名2:</label>
+                            <input class="easyui-textbox" id="copyToVal1_2"  name="copyToVal1" style="width:30%"><br>
+
+                            <label for="copyToId1_3"  style="padding-left: 35px;padding-top: 20px;">工號3:</label>
+                            <input class="easyui-textbox" id="copyToId1_3"  name="copyToId" style="width:30%">
+                            <label for="copyToVal1_3"  style="padding-left: 20px;">姓名3:</label>
+                            <input class="easyui-textbox" id="copyToVal1_3"  name="copyToVal1" style="width:30%">
+
+                            <hr>
+                            <div style="text-align:center;padding-bottom:10px">
+                                 <button id="copy_sumit" class="easyui-linkbutton" id="copy_exec" style="width:80px">確定複製</button>
+                                <span style="padding-left: 35px;"></span>
+                                 <button id="copy_clear" class="easyui-linkbutton" style="width:80px">清除</button>
+                            </div>
+                       </div>
+                    </form>
+                </div>
+
+            <!--  excel匯入  -->
+                <div id="import_dd" hidden="True">
+                  <form id="import_form" method="POST" enctype="multipart/form-data" action="{{ import_url }}">
+                    {% csrf_token %}
+                      <div class="easyui-panel" title="" style="width:100%;max-width:400px;height: 150px;padding:30px 60px;">
+                          <input id="import_fn" name="myfile" accept=".xlsx" class="easyui-filebox" style="width:100%">
+                          <p></p>
+                          <button class="easyui-linkbutton" id="import_exec" style="width:100%">匯入檔案</button>
+                      </div>
+                  </form>
+                </div>
+
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+
+
+{% block east_region %}
+    <div data-options="region:'east',split:true" style="width:45%">
+       {% block east %}
+        <div id='searchArea'>
+            <label for="searchWorkCode" style="padding-left: 10px;padding-top: 10px;" >員工:</label>
+            <input id='searchWorkCode' class="easyui-textbox text-center"   name="searchWorkCode" style="width:22%">
+            <label for="searchDirector" style="padding-left: 10px;">主管:</label>
+            <input id='searchDirector' class="easyui-textbox text-center"   name="searchDept" style="width:22%;">
+            <label for="searchDept" style="padding-left: 10px;padding-top: 10px;">部門:</label>
+            <input id='searchDept' class="easyui-textbox text-center"   name="searchDept" style="width:35%;">
+<!--            <div style="text-align:center;padding-left: 10px;padding-top: 15px;">-->
+            <div style="padding-left: 10px;padding-top: 15px;">
+
+                <button  id="search_clear" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">清除搜尋</button>
+                <span style="padding-left: 40px;"></span>
+                <button  id="east_search" class="easyui-linkbutton"  data-options="iconCls:'icon-search'"><b>搜尋</b></button>
+
+             </div>
+        </div>
+        <div style="width:100%; height: 100%">
+            {% component name="dg"
+                         config=main_dg_config
+                         node_id='main_dg'
+                         width='100%'
+                         height='88%'
+            %}
+        </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+    var currentFactory = "{{factory.id}}";
+{% endblock %}

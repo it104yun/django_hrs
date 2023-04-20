@@ -1,0 +1,58 @@
+{% extends 'base/single_object_list.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/kpi/pm203.js' %}"></script>
+    <style type="text/css">
+        #progress_div {
+          width: 100%;
+          height: 25px;
+          background-color: navy;
+          position: relative;
+          font-weight: bold;
+          animation-timing-function: linear;
+          animation: mymove 10s infinite alternate;  /*IE*/
+        }
+
+        @keyframes mymove {
+          from {left: 0%;background-color: navy;}
+          to {left: 63%;background-color: red;}
+        }
+    </style>
+{% endblock %}
+
+{% block process_component %}
+    {% if perm.update == 'True' %}
+        {% component name="btn"
+                     btn_css_class='btn btn-danger btn-lg btn-block'
+                     btn_node_id='update_btn'
+                     btn_text='確 定 關 帳'
+        %}
+    {% endif %}
+
+    <div id="progressArea" class="p-3">
+        <div class="border border-dark rounded">
+            <div id="progress_div" style="width:25%;border-radius: 5px;color: white;text-align: center;horiz-align: center;letter-spacing: 1px;"><h6>...關帳檢核中，請等待30~120秒...</h6></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block east_region %}
+    <div data-options="region:'east',split:true" style="width:20%">
+        {% block east %}
+            {% component name="dg"
+                     config=main_dg_config
+                     node_id='main_dg'
+            %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block bottom_script %}
+    var before_lastdate = "{{before_lastdate}}";
+{% endblock %}
+
+

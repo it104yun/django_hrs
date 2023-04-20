@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="https://www.runoob.com/static/js/wonderland.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-3d.js"></script>
+    <script type="text/javascript" src="{% static 'js/skill_pdca/tt421.js' %}"></script>
+    <style>
+       th, td {
+          padding: 10px;
+        }
+       .style1 {
+           width: 650px;
+           height:425px;
+           background-color: cornsilk;
+           border: 10mm ridge rgba(50, 170, 255, .6);
+       }
+    </style>
+{% endblock %}
+
+{% block layout %}
+    <table>
+        <tr>
+            <td>
+               <div id="main1" class="style1"></div>
+            </td>
+            <td>
+                <div id="main2" class="style1"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="main3" class="style1"></div>
+            </td>
+            <td>
+                  <div id="main4" class="style1"></div>
+            </td>
+        </tr>
+    </table>
+
+{% endblock %}
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+{% endblock %}

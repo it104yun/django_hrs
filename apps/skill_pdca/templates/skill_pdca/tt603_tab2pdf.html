@@ -1,0 +1,166 @@
+{% load static %}
+{% load i18n %}
+
+<!--<html lang="zh-Hant">-->
+<html>
+    <head>
+        <title>{% trans "工作事項明細表" %}</title>
+        <style>
+            table, th, td {
+              border: 1px solid DimGray;
+              border-collapse: collapse;
+              font-size: medium;
+              text-align: center;
+            }
+
+            .group {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .footer_style {
+                color:red;
+                text-align: right;
+                letter-spacing: 5px;
+                font-family: 微軟正黑體;
+                font-weight: bolder;}
+
+            .title_style {
+                text-align: center;
+                letter-spacing: 3px;
+                font-size: 36px;
+                font-family: 微軟正黑體;
+                font-weight: bolder;}
+
+            .employee_style {
+                text-align: center;
+                font-size: 24px;
+                text-decoration:underline;
+                font-family: 微軟正黑體;
+                font-weight: bolder;
+            }
+            .p_color { background-color: #FFDDEE;}
+            .d_color { background-color: #DDEEEE;}
+            .c_color { background-color: #ffffEE;}
+            .a_color { background-color: #EEffff;}
+            .f_color { background-color: #EEEEEE;}
+            .xa_color { background-color: #F8F8F8; color:navy;}
+            .xb_color { background-color: #F8F8F8; color:navy;}
+            .xc_color { background-color: #F8F8F8; color:navy;}
+        </style>
+    </head>
+<body>
+    <p  class="title_style" >{% trans "工作事項明細表" %}</p>
+    <p class="employee_style">
+            {% trans "部門" %}:{{ employee.dept }}       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% trans "工號" %}:{{ employee.work_code }}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% trans "姓名" %}:{{ employee.chi_name }}   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% trans "職等" %}:{{ employee.rank }}       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% trans "職稱" %}:{{ employee.pos }}        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% trans "到職日" %}:{{ employee.arrival_date }}
+    </p>
+    {% for tab in tabs %}
+        <h3 style="display:inline;" class="employee_style">{% trans "職務" %} : {{tab.job_title_desc }}</h3>
+        <table style="border: 2px solid;">
+            <tbody>
+                {% for fields in tab_fields %}
+                     <tr>
+                        <td rowspan="2">NO.</td>
+                        <td rowspan="2" style="letter-spacing: 10px;font-size: 24px;font-weight: bolder;">{% trans "工作項目" %}</td>
+                        {% for group in groups %}
+                            {% if forloop.counter == forloop.parentloop.counter %}
+                                <td colspan="{{group.P_length}}" class="group p_color">Ｐ</td>
+                                <td colspan="{{group.D_length}}" class="group d_color">Ｄ</td>
+                                <td colspan="{{group.C_length}}" class="group c_color">Ｃ</td>
+                                <td colspan="{{group.A_length}}" class="group a_color">Ａ</td>
+                                <td colspan="{{group.F_length}}" class="group f_color" style="letter-spacing: 50px;">{% trans "流程" %}</td>
+                                <td colspan="1" class="group xa_color">{% trans "作業<br>時間" %}</td>
+                                <td colspan="2" class="group xb_color">{% trans "週期<br>次數" %}</td>
+                                <td colspan="1" class="group xc_color">{% trans "每月<br>合計" %}</td>
+                                <td colspan="1" class="group p_color">P</td>
+                                <td colspan="1" class="group d_color">Ｄ</td>
+                                <td colspan="{{group.C_length}}" class="group c_color">Ｃ</td>
+                                <td colspan="1" class="group a_color">Ａ</td>
+                                <td colspan="1" class="group d_color">{% trans "比對" %}</td>
+                            {% endif %}
+                        {% endfor %}
+                     </tr>
+                     <tr>
+ `                      {% for field in fields %}
+                            <td class="xa_color">
+                                {% autoescape off %}
+                                {{ field.verbose_name }}
+                                {% endautoescape %}
+                            </td>
+                        {% endfor %}
+                     </tr>
+                {% endfor %}
+
+                {% for datas in tab_datas %}
+                    {% for data in datas %}
+                        {% if data.job_title == tab.job_title %}
+                            {% if data.order_number < 9990 %}
+                                {% for key,val in data.items %}
+                                    {% if key != "id" and key != "master" and key != "job_title" %}
+                                        {% if val == None %}
+                                        {% else %}
+                                             {% ifequal val 0 %}
+                                                <td></td>
+                                             {% else %}
+                                                {% if key == "work_item"%}
+                                                    <td style="text-align: left;">{{ val }}</td>
+                                                {% else %}
+                                                    <td>{{ val }}</td>
+                                                {% endif %}
+                                             {% endifequal %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                </tr>
+                            {% else %}
+                                <tr>
+                                {% ifequal data.order_number 9991 %}
+                                    <tr><td colspan="28" style="background-color: black;height: 2px;"></td></tr>
+                                    <td colspan="17" class="footer_style">{% trans "小計" %}</td>
+                                    <td>{{ data.calc01 }}</td>
+                                    <td colspan="2"  class="footer_style">{% trans "小計" %}</td>
+                                    <td>{{ data.calc02 }}</td>
+                                    <td>{{ data.ptot01 }}</td>
+                                    <td>{{ data.dtot01 }}</td>
+                                    <td>{{ data.ctot01 }}</td>
+                                    <td>{{ data.ctot02 }}</td>
+                                    <td>{{ data.ctot03 }}</td>
+                                    <td>{{ data.atot01 }}</td>
+                                    <td>{{ data.okyn01 }}</td>
+                                {% else %}
+                                    {% ifequal data.order_number 9992 %}
+                                        <td colspan="20" class="footer_style">{% trans "總計" %}</td>
+                                        <td>{{ data.calc02 }}</td>
+                                        <td colspan="7"></td>
+                                    {% else %}
+                                        {% ifequal data.order_number 9993 %}
+                                            <td colspan="20"  class="footer_style">{% trans "平均工作時數/天" %}</td>
+                                            <td>{{ data.calc02 }}</td>
+                                            <td>{{ data.ptot01 }}%</td>
+                                            <td>{{ data.dtot01 }}%</td>
+                                            <td>{{ data.ctot01 }}%</td>
+                                            <td>{{ data.ctot02 }}%</td>
+                                            <td>{{ data.ctot03 }}%</td>
+                                            <td>{{ data.atot01 }}%</td>
+                                            <td>{{ data.okyn01 }}%</td>
+                                        {% endifequal %}
+                                    {% endifequal %}
+                                {% endifequal %}
+                            {% endif %}
+                            </tr>
+
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+       <p>&nbsp;</p>
+    {% endfor %}
+</body>
+
+</html>

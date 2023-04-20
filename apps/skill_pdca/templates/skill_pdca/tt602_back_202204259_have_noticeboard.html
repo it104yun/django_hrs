@@ -1,0 +1,170 @@
+{% extends 'base/tab_grid_list.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/skill_pdca/tt602.js' %}"></script>
+    <style type="text/css">
+        input[type="file"] {
+           display: none;
+        }
+
+        .datagrid-footer .datagrid-row{
+           background: navy;
+           color:white;
+        }
+
+        .file {
+            position: relative;
+            display: inline-block;
+            background: #D0EEFF;
+            border: 1px solid #99D3F5;
+            border-radius: 4px;
+            padding: 4px 12px;
+            overflow: hidden;
+            color: #1E88C7;
+            text-decoration: none;
+            text-indent: 0;
+            line-height: 20px;
+        }
+
+
+      fieldset legend{
+          width : 78vw;
+        border-radius: 100px;
+        border: 2px solid #73AD21;
+        background: MidnightBlue;
+          color:yellow;
+          text-align: center;
+          letter-spacing: 30px;
+          font-family: 微軟正黑體;
+          color: yellow;
+      }
+
+        .note_table {
+              border: 1px solid DimGray;
+              border-collapse: collapse;
+              text-align: center;
+              font-size: 15px;
+        }
+
+        .note_table_th {
+            /*height: 30px;*/
+            background-color: DarkSlateGrey;
+            color: white;
+        }
+
+        .note_table_td {
+            color: blue;
+            text-align: left;
+        }
+
+
+
+    </style>
+{% endblock %}
+
+
+{% block center_extra %}
+        <script>
+            var curr_the_time = parseInt($('#id_the_time').val());
+            if (  curr_the_time == 999999 ){
+                alert("最後一個版次的『工作事項明細表』尚未簽核完成\n不允再寫新的版次");
+            }
+        </script>
+
+        <div id="demo"></div>
+        <div id="main-tab" class="easyui-tabs"  data-options="tools:'#tab-tools',toolPosition:'right'"  style="width:100%;height:63%;">
+            {% for tab in tab_context_list %}
+                <div id="{{ tab.job_title }}" name="{{ tab.job_title }}" title="{{ tab.job_title_desc }}" style="overflow:auto;padding:20px;display:none;" >
+                     {% component
+                         name="dg"
+                         config=tab.main_dg_config
+                         node_id=tab.node_id
+                         width='100%'
+                         height='107%'
+                    %}
+                </div>
+            {% endfor %}
+        </div>
+        <div id="tab-tools">
+            <h5></h5>
+            <a href="#" id="import_btn" class="easyui-linkbutton" iconCls="import-excel" style="color: red;font-weight: bolder;">匯入</a>
+                <div id="import_dd" hidden="True">
+                    {% csrf_token %}
+                      <div class="easyui-panel" title="" style="width:700vw;height: 425px;padding: 20px 20px;">
+                          <p></p>
+                          <label class="easyui-linkbutton" style="padding-top:8px;width: 150px;height: 50px;color: darkblue;vertical-align: middle;letter-spacing: 1px;"><h5>選擇Excel檔</h5>
+                            <input type="file" onchange="importf(this)"  accept=".xlsx"  id="myfile" name="myfile" />
+                          </label>
+                          <p>&nbsp;</p>
+                          <h4 style="color:red;letter-spacing: 5px;font-weight: bold;">***請注意***</h4>
+                          <h5 style="color:red;letter-spacing: 1px;">
+                              <ol>
+                                  <li>Excel檔，請使用"人資"提供的格式，第"1,2"列，勿變動，勿刪除</li>
+                                  <li>檢查Excel檔
+                                      <ul>
+                                          <li>工作項目(不可空白)</li>
+                                          <li>工作方式(PDCA至少要填一個)</li>
+                                          <li>流程(每格務必填寫完整，不可空白，空白可填寫無）</li>
+                                          <li>週期/次數(不可空白)</li>
+                                          <li>不可以有&符號，請善用Excel『尋找』，勿用"目視法"</li>
+                                      </ul>
+                                  </li>
+                                  <li>匯入後，請記得"儲存"；未儲存，不允許做下次的"匯入"</li>
+                                  <li>儲存後，若還是無法匯入:<br>可按下F5或按下Ctrl+R，或按"右鍵／重新載入"</li>
+                              </ol>
+                          </h5>
+                      </div>
+                </div>
+
+            <span style="padding-left: 10px;"></span>
+            <button  id="export_btn" class="easyui-linkbutton" iconCls="import-excel">匯出</button>
+
+
+            <span style="padding-left: 10px;"></span>
+            <a href="#" id="tab_save" class="easyui-linkbutton" iconCls="icon-save">儲存</a>
+            <span style="padding-left: 10px;"></span>
+            <a href="#" id="preview_report" class="easyui-linkbutton" iconCls="icon-redo">預覽報表</a>
+            <span style="padding-left: 10px;"></span>
+            <a href="#" id="submit_bpm" class="easyui-linkbutton" iconCls="icon-redo">送至BPM</a>
+            <span style="padding-left: 10px;"></span>
+            <a href="#" id="add_version" class="easyui-linkbutton" iconCls="icon-add">新增</a>
+            <span style="padding-left: 15px;"></span>
+            <a href="#" id="button_get_data_2calc" class="easyui-linkbutton" hidden="True"></a>
+        </div>
+
+        <div id="Row_Menu" class="easyui-menu" style="width: 80px; display: none;">
+            <div id="insert" data-options="iconCls:'icon-add'"  onclick="Row_Insert()">插入</div>
+            <div id="duplicate" data-options="iconCls:'icon-ok'" onclick="Row_Duplicate()">複製</div>
+            <div id="clear" data-options="iconCls:'icon-clear'" onclick="Row_Clear()">清除</div>
+            <div id="delete" data-options="iconCls:'icon-remove'" onclick="Row_Delete()">刪除</div>
+            <div id="tab_endEdit" class="easyui-linkbutton" iconCls="icon-cancel" hidden>關閉編輯</div>
+        </div>
+
+        <table id="note_table" class="note_table" align="center">
+            <tr  class="note_table_th">
+                <th width="50px" >NO</th>
+                <th width="400px" style="letter-spacing: 2px;">填寫注意事項( 若無法儲存成功，請檢查下列幾點 )</th>
+            </tr>
+            <tr style="background-color: white;"><td>1</td><td class="note_table_td">工作項目( 不可空白 )</td></tr>
+            <tr style="background-color: lemonchiffon;"><td>2</td><td class="note_table_td">工作方式( PDCA至少要填一個 )</td></tr>
+            <tr style="background-color: white;"><td>3</td><td class="note_table_td">流程( 每格務必填寫完整，不可空白，空白可填寫無 ）</td></tr>
+            <tr style="background-color: lemonchiffon;"><td>4</td><td class="note_table_td">週期/次數( 不可空白 )</td></tr>
+            <tr style="background-color: white;"><td>5</td><td class="note_table_td">不可有&符號，善用"Ctrl+F"做尋找，勿用"目視法"</td></tr>
+        </table>
+
+{% endblock %}
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}};    //safe:禁用變量的自動轉義
+    var tabs = {{tabs|safe}};
+    var tab_fields = {{tab_fields|safe}};
+    var cycle_choices = {{cycle_choices|safe}};
+    var pdca_calc = {{pdca_calc|safe}};
+    var wfactor = {{working_hours|safe}};
+    var the_time = {{the_time|safe}};
+    var userId = "{{user.username}}";
+{% endblock %}

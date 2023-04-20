@@ -1,0 +1,40 @@
+{% load static %}
+{% load i18n %}
+
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="">
+    <!-- js -->
+    <script type="text/javascript">
+        {% block head_script %}
+        {% endblock %}
+    </script>
+    {% block head_ref %}{% endblock %}
+</head>
+<body>
+    {% if category.parent_category %}
+    <p>父類別: </p>
+    <li><a href="{% url 'system:category_detail' category.parent_category.slug %}">{{ category.parent_category.name }}</a></li>
+    {% endif %}
+
+    <p>當前類別: </p>
+    <li><a href="{% url 'system:category_detail' category.slug %}">{{ category }}</a></li>
+
+    {% with category.category_set.all as categories %}
+    {% if categories %}
+    <p>子類別: </p>
+    {% for category in categories %}
+    <li> <a href="{% url 'system:category_detail' category.slug %}">{{ category.name }}</a></li>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</body>
+
+</html>

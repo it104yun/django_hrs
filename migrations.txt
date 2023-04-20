@@ -1,0 +1,563 @@
+common.views
+common/cm002
+common.views
+common/cm004
+kpi.views
+kpi/pm002
+module 'apps.kpi.views' has no attribute 'PM002'
+kpi.views
+kpi/pm202
+kpi.views
+kpi/pm203
+kpi.views
+kpi/pm402
+kpi.views
+kpi/pm602
+module 'apps.kpi.views' has no attribute 'PM602'
+kpi.views
+kpi/pm802
+kpi.views
+kpi/pm004
+kpi.views
+kpi/pm204
+kpi.views
+kpi/pm406
+kpi.views
+kpi/pm604
+module 'apps.kpi.views' has no attribute 'PM604'
+kpi.views
+kpi/pm804
+kpi.views
+kpi/pm006
+kpi.views
+kpi/pm206
+kpi.views
+kpi/pm408
+module 'apps.kpi.views' has no attribute 'PM408'
+kpi.views
+kpi/pm606
+module 'apps.kpi.views' has no attribute 'PM606'
+kpi.views
+kpi/pm806
+kpi.views
+kpi/pm610
+kpi.views
+kpi/pm008
+module 'apps.kpi.views' has no attribute 'PM008'
+kpi.views
+kpi/pm208
+kpi.views
+kpi/pm620
+module 'apps.kpi.views' has no attribute 'PM620'
+kpi.views
+kpi/pm808
+kpi.views
+kpi/pm210
+system.views
+system/sy011
+system.views
+system/sy110
+system.views
+system/sy120
+system.views
+system/sy130
+skill_pdca.views
+skill_pdca/tt002
+skill_pdca.views
+skill_pdca/tt202
+skill_pdca.views
+skill_pdca/tt402
+skill_pdca.views
+skill_pdca/tt4042
+module 'apps.skill_pdca.views' has no attribute 'TT4042'
+skill_pdca.views
+skill_pdca/tt4061
+skill_pdca.views
+skill_pdca/tt4081
+skill_pdca.views
+skill_pdca/tt602
+module 'apps.skill_pdca.views' has no attribute 'TT602'
+skill_pdca.views
+skill_pdca/tt6041
+module 'apps.skill_pdca.views' has no attribute 'TT6041'
+skill_pdca.views
+skill_pdca/tt204
+skill_pdca.views
+skill_pdca/tt4044
+skill_pdca.views
+skill_pdca/tt4062
+skill_pdca.views
+skill_pdca/tt4082
+module 'apps.skill_pdca.views' has no attribute 'TT4082'
+skill_pdca.views
+skill_pdca/tt6042
+module 'apps.skill_pdca.views' has no attribute 'TT6042'
+skill_pdca.views
+skill_pdca/tt206
+module 'apps.skill_pdca.views' has no attribute 'TT206'
+skill_pdca.views
+skill_pdca/tt4046
+module 'apps.skill_pdca.views' has no attribute 'TT4046'
+skill_pdca.views
+skill_pdca/tt4063
+skill_pdca.views
+skill_pdca/tt4084
+module 'apps.skill_pdca.views' has no attribute 'TT4084'
+skill_pdca.views
+skill_pdca/tt6043
+module 'apps.skill_pdca.views' has no attribute 'TT6043'
+skill_pdca.views
+skill_pdca/tt6046
+module 'apps.skill_pdca.views' has no attribute 'TT6046'
+skill_pdca.views
+skill_pdca/tt208
+skill_pdca.views
+skill_pdca/tt4064
+module 'apps.skill_pdca.views' has no attribute 'TT4064'
+skill_pdca.views
+skill_pdca/tt4086
+module 'apps.skill_pdca.views' has no attribute 'TT4086'
+skill_pdca.views
+skill_pdca/tt210
+module 'apps.skill_pdca.views' has no attribute 'TT210'
+skill_pdca.views
+skill_pdca/tt4066
+module 'apps.skill_pdca.views' has no attribute 'TT4066'
+skill_pdca.views
+skill_pdca/tt4088
+module 'apps.skill_pdca.views' has no attribute 'TT4088'
+skill_pdca.views
+skill_pdca/tt212
+module 'apps.skill_pdca.views' has no attribute 'TT212'
+admin
+ [X] 0001_initial
+ [ ] 0002_logentry_remove_auto_add
+ [ ] 0003_logentry_add_action_flag_choices
+auth
+ [X] 0001_initial
+ [ ] 0002_alter_permission_name_max_length
+ [ ] 0003_alter_user_email_max_length
+ [ ] 0004_alter_user_username_opts
+ [ ] 0005_alter_user_last_login_null
+ [ ] 0006_require_contenttypes_0002
+ [ ] 0007_alter_validators_add_error_messages
+ [ ] 0008_alter_user_username_max_length
+ [ ] 0009_alter_user_last_name_max_length
+common
+ [X] 0001_initial
+ [X] 0002_auto_20201127_1423
+ [X] 0003_auto_20201127_1449
+ [X] 0004_auto_20201203_0939
+ [X] 0005_auto_20201210_1410
+ [X] 0006_auto_20201210_1416
+ [X] 0007_auto_20201210_1421
+ [X] 0008_auto_20201211_1024
+ [X] 0009_auto_20201211_1427
+ [X] 0010_auto_20210412_1431
+ [X] 0011_auto_20210412_1448
+ [X] 0012_auto_20210412_1451
+ [X] 0013_fileactionledger
+ [X] 0014_auto_20210630_1538
+ [X] 0015_auto_20210630_1544
+ [X] 0016_auto_20210630_1554
+ [X] 0017_auto_20210630_1606
+ [X] 0018_auto_20210630_1618
+ [X] 0019_userdefcode_description
+ [X] 0020_auto_20210817_1511
+ [X] 0021_auto_20210817_1643
+contenttypes
+ [X] 0001_initial
+ [ ] 0002_remove_content_type_name
+kpi
+ [X] 0001_initial
+ [X] 0002_employeeinfoeasy_id
+ [X] 0003_auto_20201019_1552
+ [X] 0004_auto_20201029_0834
+ [X] 0005_auto_20201029_0846
+ [X] 0006_auto_20201029_1126
+ [X] 0007_auto_20201029_1200
+ [X] 0008_auto_20201029_1408
+ [X] 0009_auto_20201105_1647
+ [X] 0010_metricssetup_low_limit
+ [X] 0011_auto_20201105_1715
+ [X] 0012_auto_20201106_0908
+ [X] 0013_auto_20201110_1608
+ [X] 0014_auto_20201110_1625
+ [X] 0015_auto_20201111_0946
+ [X] 0016_auto_20201111_1022
+ [X] 0017_auto_20201111_1027
+ [X] 0018_auto_20201111_1028
+ [X] 0019_auto_20201111_1031
+ [X] 0020_auto_20201111_1035
+ [X] 0021_auto_20201113_0947
+ [X] 0022_auto_20201113_0948
+ [X] 0023_auto_20201126_1656
+ [X] 0024_auto_20201127_1423
+ [X] 0025_auto_20201127_1449
+ [X] 0026_auto_20201127_1509
+ [X] 0027_auto_20201203_0950
+ [X] 0028_auto_20201203_1014
+ [X] 0029_scoresheet_calc_content
+ [X] 0030_auto_20201209_1458
+ [X] 0031_auto_20201211_1109
+ [X] 0032_auto_20201211_1455
+ [X] 0033_scoresheet_this_status
+ [X] 0034_remove_scoresheet_last_status
+ [X] 0035_auto_20201211_1622
+ [X] 0036_auto_20201214_1056
+ [X] 0037_auto_20201214_1521
+ [X] 0038_auto_20201216_1009
+ [X] 0039_auto_20210218_1413
+ [X] 0040_auto_20210302_0916
+ [X] 0041_employeeinfoeasy_corp
+ [X] 0042_auto_20210316_1058
+ [X] 0043_auto_20210318_1309
+ [X] 0044_auto_20210318_1310
+ [X] 0045_auto_20210330_1627
+ [X] 0046_auto_20210331_1142
+ [X] 0047_auto_20210401_0925
+ [X] 0048_auto_20210406_0938
+ [X] 0049_auto_20210406_1015
+ [X] 0050_auto_20210406_1148
+ [X] 0051_auto_20210407_1415
+ [X] 0052_auto_20210408_1007
+ [X] 0053_auto_20210408_1017
+ [X] 0054_auto_20210412_1431
+ [X] 0055_auto_20210412_1448
+ [X] 0056_auto_20210412_1451
+ [X] 0057_auto_20210416_1634
+ [X] 0058_auto_20210421_1353
+ [X] 0059_auto_20210506_1200
+ [X] 0060_auto_20210506_1322
+ [X] 0061_auto_20210512_1135
+ [X] 0062_auto_20210513_0840
+ [X] 0063_auto_20210521_1042
+ [X] 0064_auto_20210521_1055
+ [X] 0065_auto_20210521_1146
+ [X] 0066_auto_20210621_1457
+ [X] 0067_auto_20210621_1551
+ [X] 0068_auto_20210621_1720
+ [X] 0069_auto_20210625_1517
+ [X] 0070_auto_20210625_1607
+ [X] 0071_auto_20210630_1529
+ [X] 0072_auto_20210702_1217
+ [X] 0073_auto_20210702_1221
+ [X] 0074_auto_20210703_1558
+ [X] 0075_auto_20210703_1609
+ [X] 0076_auto_20210703_1610
+ [X] 0077_auto_20210704_1851
+ [X] 0078_auto_20210706_1454
+ [X] 0079_auto_20210706_1456
+ [X] 0080_auto_20210706_1458
+ [X] 0081_auto_20210803_1411
+ [X] 0082_auto_20210806_1035
+ [X] 0083_auto_20210806_1051
+ [X] 0084_auto_20210806_1053
+ [X] 0085_auto_20210806_1141
+ [X] 0086_auto_20210806_1142
+ [X] 0087_auto_20210817_1512
+ [X] 0088_auto_20210823_1533
+ [X] 0089_auto_20210824_1152
+ [X] 0090_auto_20210825_1319
+ [X] 0091_auto_20210826_1003
+ [X] 0092_auto_20210827_1037
+ [X] 0093_auto_20210830_1015
+ [X] 0094_auto_20210830_1044
+ [X] 0095_auto_20210831_1116
+ [X] 0096_auto_20210901_1503
+ [X] 0097_auto_20210915_1317
+ [X] 0098_auto_20210917_0919
+ [X] 0099_auto_20210917_0920
+ [X] 0100_auto_20210917_1014
+ [X] 0101_auto_20210917_1015
+ [X] 0102_auto_20210917_1016
+ [X] 0103_auto_20210924_1653
+ [X] 0104_auto_20210928_0931
+ [X] 0105_auto_20210930_1337
+ [X] 0106_auto_20210930_1340
+ [X] 0107_auto_20211006_0934
+ [X] 0108_auto_20211006_1114
+ [X] 0109_remove_scorestatus_date_mm
+ [X] 0110_auto_20211006_1136
+ [X] 0111_scorestatus_bpm_status
+ [X] 0112_auto_20211006_1400
+ [X] 0113_remove_scorestatus_last_status
+ [X] 0114_auto_20211006_1404
+ [X] 0115_auto_20211006_1519
+ [X] 0116_auto_20211006_1528
+ [X] 0117_auto_20211007_1049
+ [X] 0118_auto_20211007_1605
+ [X] 0119_auto_20211008_1323
+ [X] 0120_auto_20211013_0939
+ [X] 0121_auto_20211013_1329
+ [X] 0122_auto_20211013_1348
+ [X] 0123_auto_20211013_1502
+ [X] 0124_auto_20211013_1527
+ [X] 0125_auto_20211015_1141
+recruiter
+ [X] 0001_initial
+ [X] 0002_auto_20201029_0834
+ [X] 0003_auto_20201029_0846
+ [X] 0004_auto_20201029_0921
+ [X] 0005_auto_20201029_0923
+ [X] 0006_auto_20201029_1126
+ [X] 0007_auto_20201029_1135
+ [X] 0008_auto_20201029_1156
+ [X] 0009_auto_20201029_1200
+ [X] 0010_auto_20201029_1408
+ [X] 0011_auto_20201029_1640
+ [X] 0012_auto_20201104_1052
+ [X] 0013_auto_20201104_1058
+ [X] 0014_auto_20201105_1647
+ [X] 0015_auto_20201105_1701
+ [X] 0016_auto_20201105_1715
+ [X] 0017_auto_20201106_0908
+ [X] 0018_auto_20201109_1619
+ [X] 0019_auto_20201109_1632
+ [X] 0020_auto_20201110_1608
+ [X] 0021_auto_20201110_1625
+ [X] 0022_auto_20201111_0946
+ [X] 0023_auto_20201111_1022
+ [X] 0024_auto_20201111_1027
+ [X] 0025_auto_20201111_1028
+ [X] 0026_auto_20201111_1028
+ [X] 0027_auto_20201111_1031
+ [X] 0028_auto_20201111_1035
+ [X] 0029_auto_20201113_0947
+ [X] 0030_auto_20201113_0948
+ [X] 0031_auto_20201126_1656
+ [X] 0032_auto_20201127_1423
+ [X] 0033_auto_20201127_1449
+ [X] 0034_auto_20201127_1509
+ [X] 0035_auto_20201202_1020
+ [X] 0036_auto_20201202_1333
+ [X] 0037_auto_20201202_1335
+ [X] 0038_auto_20201202_1336
+ [X] 0039_auto_20201202_1620
+ [X] 0040_auto_20201202_1621
+ [X] 0041_auto_20201202_1623
+ [X] 0042_auto_20201202_1623
+ [X] 0043_auto_20201202_1625
+ [X] 0044_auto_20201202_1630
+ [X] 0045_auto_20201203_0919
+ [X] 0046_auto_20201203_0925
+ [X] 0047_auto_20201203_0925
+ [X] 0048_auto_20201203_0930
+ [X] 0049_auto_20201203_0939
+ [X] 0050_auto_20201203_0946
+ [X] 0051_auto_20201203_0946
+ [X] 0052_auto_20201203_0947
+ [X] 0053_auto_20201203_0948
+ [X] 0054_auto_20201203_0950
+ [X] 0055_auto_20201203_1014
+ [X] 0056_auto_20201209_1418
+ [X] 0057_auto_20201209_1458
+ [X] 0058_auto_20201210_1410
+ [X] 0059_auto_20201210_1416
+ [X] 0060_auto_20201210_1421
+ [X] 0061_auto_20201211_1024
+ [X] 0062_auto_20201211_1109
+ [X] 0063_auto_20201211_1427
+ [X] 0064_auto_20201211_1430
+ [X] 0065_auto_20201211_1431
+ [X] 0066_auto_20201211_1432
+ [X] 0067_auto_20201211_1432
+ [X] 0068_auto_20201211_1437
+ [X] 0069_auto_20201211_1450
+ [X] 0070_auto_20201211_1454
+ [X] 0071_auto_20201211_1455
+ [X] 0072_auto_20201211_1457
+ [X] 0073_auto_20201211_1618
+ [X] 0074_auto_20201211_1621
+ [X] 0075_auto_20201211_1622
+ [X] 0076_auto_20201211_1622
+ [X] 0077_auto_20201214_1036
+ [X] 0078_auto_20201214_1051
+ [X] 0079_auto_20201214_1053
+ [X] 0080_auto_20201214_1053
+ [X] 0081_auto_20201214_1054
+ [X] 0082_auto_20201214_1056
+ [X] 0083_auto_20201214_1521
+ [X] 0084_auto_20201216_1009
+ [X] 0085_auto_20210218_1413
+ [X] 0086_auto_20210302_0937
+ [X] 0087_auto_20210318_1149
+ [X] 0088_auto_20210318_1200
+ [X] 0089_auto_20210318_1212
+ [X] 0090_auto_20210318_1213
+ [X] 0091_auto_20210318_1214
+ [X] 0092_auto_20210318_1215
+ [X] 0093_auto_20210318_1305
+ [X] 0094_auto_20210318_1309
+ [X] 0095_auto_20210318_1310
+ [X] 0096_auto_20210401_0925
+ [X] 0097_auto_20210406_0938
+ [X] 0098_auto_20210406_1015
+ [X] 0099_auto_20210406_1148
+ [X] 0100_auto_20210407_1415
+ [X] 0101_auto_20210408_1007
+ [X] 0102_auto_20210408_1017
+ [X] 0103_auto_20210412_1431
+ [X] 0104_auto_20210412_1448
+ [X] 0105_auto_20210412_1451
+ [X] 0106_auto_20210416_1634
+ [X] 0107_auto_20210421_1353
+ [X] 0108_auto_20210621_1457
+ [X] 0109_auto_20210621_1551
+ [X] 0110_auto_20210621_1720
+ [X] 0111_auto_20210625_1607
+ [X] 0112_auto_20210630_1529
+ [X] 0113_auto_20210630_1538
+ [X] 0114_auto_20210630_1544
+ [X] 0115_auto_20210630_1554
+ [X] 0116_auto_20210630_1606
+ [X] 0117_auto_20210630_1618
+ [X] 0118_auto_20210702_1217
+ [X] 0119_auto_20210702_1221
+ [X] 0120_auto_20210703_1558
+ [X] 0121_auto_20210703_1609
+ [X] 0122_auto_20210703_1610
+ [X] 0123_auto_20210704_1851
+ [X] 0124_auto_20210706_1454
+ [X] 0125_auto_20210706_1456
+ [X] 0126_auto_20210706_1458
+ [X] 0127_auto_20210706_1508
+ [X] 0128_auto_20210803_1411
+ [X] 0129_auto_20210806_1035
+ [X] 0130_auto_20210806_1051
+ [X] 0131_auto_20210806_1053
+ [X] 0132_auto_20210806_1141
+ [X] 0133_auto_20210806_1142
+ [X] 0134_auto_20210806_1142
+ [X] 0135_auto_20210806_1530
+ [X] 0136_auto_20210817_1512
+ [X] 0137_auto_20210823_1533
+ [X] 0138_auto_20210823_1535
+ [X] 0139_auto_20210823_1642
+ [X] 0140_auto_20210823_1653
+ [X] 0141_auto_20210824_1152
+ [X] 0142_auto_20210825_1319
+ [X] 0143_auto_20210825_1336
+ [X] 0144_auto_20210825_1337
+ [X] 0145_auto_20210825_1339
+ [X] 0146_auto_20210825_1345
+ [X] 0147_auto_20210825_1350
+ [X] 0148_auto_20210825_1412
+ [X] 0149_auto_20210825_1417
+ [X] 0150_auto_20210825_1419
+ [X] 0151_auto_20210825_1422
+ [X] 0152_auto_20210825_1456
+ [X] 0153_auto_20210825_1457
+ [X] 0154_auto_20210825_1458
+ [X] 0155_auto_20210825_1507
+ [X] 0156_auto_20210825_1613
+ [X] 0157_auto_20210825_1616
+ [X] 0158_auto_20210825_1701
+ [X] 0159_auto_20210826_1003
+ [X] 0160_auto_20210826_1012
+ [X] 0161_auto_20210826_1027
+ [X] 0162_auto_20210826_1037
+ [X] 0163_auto_20210826_1053
+ [X] 0164_auto_20210826_1058
+ [X] 0165_auto_20210826_1110
+ [X] 0166_auto_20210826_1114
+ [X] 0167_auto_20210826_1140
+ [X] 0168_auto_20210826_1144
+ [X] 0169_auto_20210826_1325
+ [X] 0170_auto_20210827_1037
+ [X] 0171_auto_20210827_1159
+ [X] 0172_auto_20210827_1317
+ [X] 0173_auto_20210827_1317
+ [X] 0174_auto_20210827_1322
+ [X] 0175_auto_20210827_1343
+ [X] 0176_auto_20210827_1347
+ [X] 0177_auto_20210827_1351
+ [X] 0178_auto_20210827_1355
+ [X] 0179_auto_20210827_1356
+ [X] 0180_auto_20210827_1359
+ [X] 0181_auto_20210827_1400
+ [X] 0182_auto_20210827_1401
+ [X] 0183_auto_20210827_1403
+ [X] 0184_auto_20210830_1015
+ [X] 0185_auto_20210830_1044
+ [X] 0186_auto_20210831_1116
+ [X] 0187_auto_20210831_1132
+ [X] 0188_auto_20210831_1135
+ [X] 0189_auto_20210901_1503
+ [X] 0190_auto_20210915_1317
+ [X] 0191_auto_20210917_0919
+ [X] 0192_auto_20210917_0920
+ [X] 0193_auto_20210917_1014
+ [X] 0194_auto_20210917_1015
+ [X] 0195_auto_20210917_1016
+ [X] 0196_auto_20210917_1022
+ [X] 0197_auto_20210924_1653
+ [X] 0198_auto_20210924_1655
+ [X] 0199_auto_20210928_0931
+ [X] 0200_auto_20210930_1337
+ [X] 0201_auto_20210930_1340
+ [X] 0202_auto_20210930_1343
+ [X] 0203_auto_20211006_0924
+ [X] 0204_auto_20211006_0926
+sessions
+ [X] 0001_initial
+skill_pdca
+ [X] 0001_initial
+ [X] 0002_jobtitle_level_number
+ [X] 0003_auto_20210819_1015
+ [X] 0004_auto_20210819_1409
+ [X] 0005_auto_20210820_1045
+ [X] 0006_auto_20210820_1128
+ [X] 0007_auto_20210820_1142
+ [X] 0008_auto_20210820_1707
+ [X] 0009_auto_20210823_1007
+ [X] 0010_auto_20210823_1533
+ [X] 0011_auto_20210823_1642
+ [X] 0012_auto_20210825_1331
+ [X] 0013_auto_20210825_1336
+ [X] 0014_auto_20210825_1337
+ [X] 0015_auto_20210825_1339
+ [X] 0016_auto_20210825_1345
+ [X] 0017_auto_20210825_1350
+ [X] 0018_auto_20210825_1355
+ [X] 0019_auto_20210825_1412
+ [X] 0020_auto_20210825_1417
+ [X] 0021_auto_20210825_1419
+ [X] 0022_auto_20210825_1422
+ [X] 0023_auto_20210825_1456
+ [X] 0024_auto_20210825_1457
+ [X] 0025_skillmatrix_work_code
+ [X] 0026_remove_skillmatrix_work_code
+ [X] 0027_auto_20210826_1037
+ [X] 0028_auto_20210826_1053
+ [X] 0029_auto_20210826_1058
+ [X] 0030_auto_20210826_1110
+ [X] 0031_auto_20210826_1114
+ [X] 0032_auto_20210826_1140
+ [X] 0033_auto_20210826_1144
+ [X] 0034_auto_20210827_1037
+ [X] 0035_auto_20210827_1159
+ [X] 0036_auto_20210827_1347
+ [X] 0037_auto_20210827_1351
+ [X] 0038_auto_20210827_1355
+ [X] 0039_auto_20210827_1356
+ [X] 0040_auto_20210827_1403
+ [X] 0041_auto_20210830_1015
+ [X] 0042_auto_20210831_1116
+ [X] 0043_auto_20210901_1503
+ [X] 0044_auto_20210915_1317
+ [X] 0045_auto_20210917_0919
+ [X] 0046_auto_20210924_1653
+ [X] 0047_auto_20210928_0931
+ [X] 0048_auto_20210930_1337
+ [X] 0049_auto_20211006_0924
+system
+ [X] 0001_initial
+ [X] 0002_auto_20201104_1052
+ [X] 0003_auto_20201104_1058
+ [X] 0004_auto_20210302_0916
+ [X] 0005_auto_20210412_1431
+ [X] 0006_auto_20210412_1448
+ [X] 0007_auto_20210412_1451
+ [X] 0008_auto_20210702_1217
+ [X] 0009_auto_20210704_1851

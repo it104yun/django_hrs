@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="19a0ea4a-bbb7-44a5-b770-449e3a9474b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pm60６.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../common/static/js/common/cm002.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../common/static/js/common/cm004.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../common/templates/common/cm002.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../common/templates/common/cm004.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../common/templates/common/pm004.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../api_kpi.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../api_kpi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../api_kpi_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../api_kpi_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/kpi/pm606.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/kpi/pm606.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../common/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../common/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../common/site.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../common/site.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../common/templates/base/single_object_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../common/templates/base/single_object_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../common/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../common/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1uZ1KbRaOltnwWE6HD7Xlmk3A7r" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="19a0ea4a-bbb7-44a5-b770-449e3a9474b9" name="Default Changelist" comment="" />
+      <created>1624858233370</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1624858233370</updated>
+      <workItem from="1624858234617" duration="4000" />
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

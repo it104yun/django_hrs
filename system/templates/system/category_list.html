@@ -1,0 +1,27 @@
+{% load static %}
+{% load i18n %}
+
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="">
+    <!-- js -->
+    <script type="text/javascript">
+        {% block head_script %}
+        {% endblock %}
+    </script>
+    {% block head_ref %}{% endblock %}
+</head>
+<body>
+    {% for category in category_list %}
+    <li><a href="{% url 'system:category_detail' category.slug %}">{{ category.name }}</a></li>
+    {% endfor %}
+</body>
+
+</html>

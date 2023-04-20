@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block layout %}
+<div class="text-center p-3 text-primary shadow-lg p-sm-5 bg-white  rounded" style="position: absolute;top:20%;left: 30%">
+        <h1>{{ user }}&nbsp;&nbsp;&nbsp;&nbsp;{% trans '歡迎您!' %}</h1><br>
+        <a class="text-primary btn btn-outline-warning" href="http://ldap-python.tiongliong.com">{% trans '修改密碼' %}</a>
+    </div>
+</div>
+{% endblock %}

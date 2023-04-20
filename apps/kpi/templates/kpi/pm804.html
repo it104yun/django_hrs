@@ -1,0 +1,115 @@
+{% extends 'base/three_grid_list.html' %}
+{% load component_tags %}
+{% load static %}
+
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/datagrid-detailview.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/kpi/pm804.js' %}"></script>
+{% endblock %}
+
+
+{% block north %}
+        <div class="container"  style="display: inline-block;text-align:left;margin: 0;padding: 0">
+          <div class="row">
+            <div class="col-md">
+                {% component name="dg"
+                     config=employee_info_easy_dg_config
+                     node_id='employee_info_easy_dg'
+                     height='220px'
+                     width='1040px'
+               %}
+            </div>
+            <div class="col-xs">
+                <p></p>
+                <button  id="south_search_open" class="btn-sm btn-dark btn btn-outline-warning tooltip"  id="south_search_open" style="width:80px"><b>開啟搜尋</b>
+                    <span class="tooltiptext">工號/姓名/部門,交叉搜尋</span>
+                </button>
+            </div>
+              <div class="col-xs">
+                  <br>
+                  <div id="south_search_dd" hidden="true">
+                     <div class="easyui-panel" title="" style="width:100%;height: 100%;padding:15px 30px;">
+                         <label for="searchWorkCode">&nbsp;&nbsp;工號:&nbsp;</label>
+                         <input id='searchWorkCode' class="easyui-textbox text-center"   name="searchWorkCode" style="width:75%">
+                         <p></p>
+                        <label for="searchChiName">&nbsp;&nbsp;姓名:&nbsp;</label>
+                        <input id='searchChiName' class="easyui-textbox text-center"   name="searchChiName" style="width:75%">
+                         <p></p>
+                        <label for="searchDept">&nbsp;&nbsp;部門:&nbsp;</label>
+                        <input id='searchDept' class="easyui-textbox text-center"   name="searchDept" style="width:75%">
+                                                <hr>
+                        <div style="text-align:center;padding:5px 0">
+                         <button  id="south_search_sumit" class="easyui-linkbutton" style="width:25%">搜尋</button>
+                         &nbsp;&nbsp;&nbsp;&nbsp;
+                         <button  id="south_search_clear" class="btn-sm btn-dark btn btn-outline-warning tooltip" style="width:25%">清除
+                             <span class="tooltiptext">清除>>搜尋:顯示全部資料</span>
+                         </button>
+                        </div>
+                     </div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+{% endblock %}
+
+
+{% block center_extra %}
+    {% component name="dg"
+                 config=main_dg_config
+                 node_id='main_dg'
+                 height='450px'
+    %}
+{% endblock %}
+
+<!-- 因應，確認/取消確認按鈕 而增加的Area  ------------------------------------------------------------------------------------Begin-->
+{% block process_component %}
+
+{% endblock %}
+<!-- 因應，確認/取消確認按鈕 而增加的Area  -----------------------------------------------------------------------------------Ending-->
+
+
+{% block main_search %}
+{% endblock %}
+
+
+{% block east_region %}
+    <div data-options="region:'east',split:true" style="width:15%">
+        {% block east %}
+            <div>
+                <label for="searchYear">&nbsp;&nbsp;年度&nbsp;</label>
+                <input id='searchYear' class="easyui-textbox text-center"   name="searchYear" style="width:50px">
+                &nbsp;
+                <button  id="search_sumit" class="btn-sm btn-dark btn btn-outline-warning tooltip"  id="search_exec" style="width:45px"><b>搜尋</b>
+                    <span class="tooltiptext">顯示全年度有指標的月份</span>
+                </button>
+           </div>
+            {% component name="dg"
+                     config=metrics_setupDate_dg_config
+                     node_id='metrics_setupDate_dg'
+                     height='675px'
+            %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}};
+    var work_code_key = "{{user.username}}";
+    var workingYear = "{{workingYear}}";
+    var workingMonth = "{{workingMonth}}";
+    var last_status = "{{last_status}}";           //此page『允許編輯』的上一狀態
+    var next_status = "{{next_status}}";           //此page『允許編輯』的下一狀態
+    var status_new = "{{status_new}}";            //新增,編輯的狀態
+    var status_submit = "{{status_submit}}";      //
+    var status_return = "{{status_return}}";      //
+    var perm = {{request.session.perm|safe}};
+    var is_director = "{{is_director}}";
+{% endblock %}
+
+
+
+

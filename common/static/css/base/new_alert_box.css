@@ -1,0 +1,251 @@
+/*彈出訊息對話方塊樣式*/
+.show_alert_box{
+width:100%;
+height:100%;
+position:fixed;
+top:0px;
+left:0px;
+background-color:rgba(0,0,0,0.6);
+display:none;
+z-index:200;
+}
+.show_alert_div{
+width:70%;
+position:absolute;
+top:50%;
+left:15%;
+margin-top:-80px;
+background-color:#fff;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border:1px solid #797979;
+overflow:hidden;
+box-sizing:border-box;
+}
+.show_alert_div h1{
+width:100%;
+float:left;
+font-size:20px;
+color:#353535;
+text-align:center;
+line-height:26px;
+margin-top:20px;
+}
+.show_alert_div h2{
+width:100%;
+float:left;
+font-size:16px;
+color:#353535;
+text-align:center;
+line-height:20px;
+margin:20px 0px 70px 0px;
+box-sizing:border-box;
+padding:0px 15px;
+}
+.show_alert_div h3{
+width:100%;
+float:left;
+font-size:16px;
+color:#353535;
+text-align:center;
+line-height:20px;
+margin:25px 0px 20px 0px;
+box-sizing:border-box;
+padding:0px 15px;
+}
+/*僅顯示訊息時 showInformation方法填充提示西資訊
+*/
+.alert_message_font{
+width:100%;
+float:left;
+font-size:16px;
+color:#353535;
+text-align:center;
+line-height:20px;
+margin:25px 0px 20px 0px !important;
+box-sizing:border-box;
+padding:0px 15px;
+}
+.show_alert_div .show_alert_button_box{
+width:100%;
+height:40px;
+position:absolute;
+bottom:0px;
+left:0px;
+border-top:1px solid #ccc;
+}
+.show_alert_div .show_alert_button_box .alert_button_div{
+width:50%;
+height:40px;
+float:left;
+font-size:18px;
+line-height:40px;
+text-align:center;
+color:#353535;
+box-sizing:border-box;
+border-right:1px solid #ccc;
+}
+.show_alert_div .show_alert_button_box .show_close_button{
+width:100%;
+height:40px;
+float:left;
+font-size:18px;
+line-height:40px;
+text-align:center;
+color:#353535;
+box-sizing:border-box;
+border-right:1px solid #ccc;
+}
+.show_cancel_button{
+width:50%;
+border-right:0;
+}
+/*輸入對話方塊樣式*/
+.show_alert_box_input{
+width:100%;
+position:fixed;
+top:0px;
+left:0px;
+background-color:rgba(0,0,0,0.6);
+display:none;
+z-index:200;
+}
+.show_alert_div_input{
+width:90%;
+position:absolute;
+top:50%;
+left:5%;
+margin-top:-80px;
+background-color:#fff;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border:1px solid #797979;
+overflow:hidden;
+box-sizing:border-box;
+}
+.show_alert_div_input h1{
+width:100%;
+float:left;
+font-size:20px;
+color:#353535;
+text-align:center;
+line-height:26px;
+margin-top:20px;
+}
+.show_alert_div_input h2{
+width:100%;
+float:left;
+font-size:14px;
+color:#353535;
+text-align:center;
+line-height:20px;
+margin:25px 0px 70px 0px;
+box-sizing:border-box;
+padding:0px 15px;
+}
+.show_alert_div_input .show_alert_button_box_input{
+width:100%;
+height:40px;
+position:absolute;
+bottom:0px;
+left:0px;
+border-top:1px solid #ccc;
+}
+.show_alert_div_input .show_alert_button_box_input .alert_button_div_input{
+width:50%;
+height:40px;
+float:left;
+font-size:18px;
+line-height:40px;
+text-align:center;
+color:#353535;
+box-sizing:border-box;
+border-right:1px solid #ccc;
+}
+.show_alert_div_input .show_alert_button_box_input .show_close_button_input{
+width:100%;
+height:40px;
+float:left;
+font-size:18px;
+line-height:40px;
+text-align:center;
+color:#353535;
+box-sizing:border-box;
+border-right:1px solid #ccc;
+}
+/*如何領獎提示框樣式*/
+.show_alert_box_how_button{
+width:100%;
+position:fixed;
+top:0px;
+left:0px;
+background-color:rgba(0,0,0,0.6);
+display:none;
+z-index:200;
+}
+.show_alert_div_how_button{
+width:90%;
+position:absolute;
+top:50%;
+left:5%;
+margin-top:-80px;
+background-color:#fff;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border:1px solid #797979;
+overflow:hidden;
+box-sizing:border-box;
+}
+.show_alert_div_how_button h1{
+width:100%;
+float:left;
+font-size:20px;
+color:#353535;
+text-align:center;
+line-height:26px;
+margin-top:20px;
+}
+.show_alert_div_how_button h2{
+width:100%;
+float:left;
+font-size:14px;
+color:#353535;
+text-align:center;
+line-height:20px;
+margin:25px 0px 70px 0px;
+box-sizing:border-box;
+padding:0px 15px;
+}
+.show_alert_div_how_button .show_alert_button_box_how_button{
+width:100%;
+height:40px;
+position:absolute;
+bottom:0px;
+left:0px;
+border-top:1px solid #ccc;
+}
+.show_alert_div_how_button .show_alert_button_box_how_button .alert_button_div_how_button{
+width:50%;
+height:40px;
+float:left;
+font-size:18px;
+line-height:40px;
+text-align:center;
+color:#353535;
+box-sizing:border-box;
+border-right:1px solid #ccc;
+}
+.show_alert_div_how_button .show_alert_button_box_how_button .show_close_button_how_button{
+width:100%;
+height:40px;
+float:left;
+font-size:18px;
+line-height:40px;
+text-align:center;
+color:#353535;
+box-sizing:border-box;
+border-right:1px solid #ccc;
+}

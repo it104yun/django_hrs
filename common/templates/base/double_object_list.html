@@ -1,0 +1,111 @@
+{% extends 'base/double_layout.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load component_tags %}
+{% block title %}{{title}}{% endblock %}
+
+{% block head_ref%}
+    {% component_dependencies 'btn' 'dlg_fm' 'edg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/page/double_object_list.js' %}"></script>
+    {% block page_js %}
+    {% endblock %}
+{% endblock %}
+
+{% block center %}
+    <div class="nav navbar justify-content-start d-flex">
+        <div id="form_btn" class="col-12">
+<!--
+               {{ request.session.perm }} <br><br>
+                {{ request.session.factory }} <br><br>
+                {{ user.username}} <br><br>
+            {% with perm=request.session.perm %}
+                read = {{ perm.read }}，
+                create = {{ perm.create }}，
+                update = {{ perm.update }}，
+                delete = {{ perm.delete }}，
+                self_data = {{ perm.self_data }}，
+                all_data = {{ perm.all_data }}
+            {% endwith %}
+-->
+        {% with perm=request.session.perm %}
+            {% if perm.update == 'True' %}
+                {% component name="btn"
+                                btn_css_class='btn btn-sm btn-outline-primary'
+                                btn_node_id='update_btn'
+                                btn_text='儲存更新'
+                %}
+            {% endif %}
+            {% if perm.update == 'True' or perm.create == 'True' %}
+                {% component name="btn"
+                                btn_css_class='btn btn-sm btn-outline-primary'
+                                btn_node_id='cancel_btn'
+                                btn_text='取消'
+                %}
+            {% endif %}
+        {% endwith %}
+        </div>
+    </div>
+    <div class="d-flex pt-3">
+        <div class="pl-3 pr-3">
+            {% crispy form %}
+        </div>
+        {% block center_extra %}
+        {% endblock %}
+    </div>
+    {% component name="dlg_fm"
+                 config=mono_search_dlg_config
+                 dlg_node_id='main_mono_search_dlg'
+                 dlg_title='單一條件搜尋'
+                 trigger='main_mono_search_btn'
+    %}
+    <div>
+        {% component name="dlg_cpx"
+                     config=complex_search_dlg_config
+                     dlg_node_id='cpx_search_dlg'
+                     trigger='main_cpx_search_btn'
+                     dlg_title='多條件搜尋'
+                     dlg_width=700
+                     dlg_height=300
+        %}
+    </div>
+{% endblock %}
+
+{% block east %}
+        <div class="nav navbar d-flex justify-content-start">
+            <div class="mr-1">
+                {% component name="btn"
+                             btn_css_class="btn btn-sm btn-outline-secondary"
+                             btn_node_id="main_mono_search_btn"
+                             btn_text="單一條件搜尋"
+                %}
+                {% component name="btn"
+                             btn_css_class="btn btn-sm btn-outline-secondary"
+                             btn_node_id="main_mono_search_btn"
+                             btn_text="多條件搜尋"
+                %}
+            </div>
+            {% block tool_btn_extra %}
+            {% endblock %}
+        </div>
+        <div style="height: 90%;">
+            {% component name="dg"
+                         config=main_dg_config
+                         node_id='main_dg'
+                         width='100%'
+                         height='92%'
+            %}
+        </div>
+{% endblock %}
+
+{% block south %}
+    {% component name="edg"
+                 config=detail_dg_config
+                 node_id='detail_dg'
+                 allowed=request.session.perm.update
+    %}
+{% endblock %}
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}}
+{% endblock %}

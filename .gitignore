@@ -1,0 +1,26 @@
+# created by virtualenv automatically
+#.hrs
+*.log
+*.pdf
+*.xlsx
+test1.txt
+test3.txt
+
+db.sqlite3
+__pycache__
+settings
+migrations
+Import_Sample
+test_area
+wkhtmltopdf
+locale
+
+wsgi.py
+media
+media-files
+
+
+
+
+
+

@@ -1,0 +1,129 @@
+{% extends 'base/tab_two_grid_list.html' %}
+{% load component_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_ref %}
+    {% component_dependencies 'btn' 'dlg_fm' 'dg' 'dlg_cpx' %}
+    <script type="text/javascript" src="{% static 'js/skill_pdca/tt603.js' %}"></script>
+    <style type="text/css">
+        input[type="file"] {
+           display: none;
+        }
+
+        .datagrid-footer .datagrid-row{
+           background: navy;
+           color:white;
+        }
+
+        .file {
+            position: relative;
+            display: inline-block;
+            background: #D0EEFF;
+            border: 1px solid #99D3F5;
+            border-radius: 4px;
+            padding: 4px 12px;
+            overflow: hidden;
+            color: #1E88C7;
+            text-decoration: none;
+            text-indent: 0;
+            line-height: 20px;
+        }
+
+
+      fieldset legend{
+          width : 78vw;
+        border-radius: 100px;
+        border: 2px solid #73AD21;
+        background: MidnightBlue;
+          color:yellow;
+          text-align: center;
+          letter-spacing: 30px;
+          font-family: 微軟正黑體;
+          color: yellow;
+      }
+
+        .note_table {
+              border: 1px solid DimGray;
+              border-collapse: collapse;
+              text-align: center;
+              font-size: 15px;
+        }
+
+        .note_table_th {
+            /*height: 30px;*/
+            background-color: DarkSlateGrey;
+            color: white;
+        }
+
+        .note_table_td {
+            color: blue;
+            text-align: left;
+        }
+
+
+
+    </style>
+{% endblock %}
+
+{% block north %}
+        <div class="container"  style="display: inline-block;text-align:left;margin: 0;padding: 0">
+          <div class="row">
+            <div class="col">
+                {% component name="dg"
+                     config=employee_info_easy_dg_config
+                     node_id='employee_info_easy_dg'
+                     height='240px'
+                     width='820px'
+               %}
+            </div>
+<!--            <div class="col">-->
+<!--                <div id="google_translate_element" style="padding-left: 10px;"></div>-->
+<!--                <script type="text/javascript">-->
+<!--                    function googleTranslateElementInit() {-->
+<!--                      new google.translate.TranslateElement({-->
+<!--                              pageLanguage: 'auto',-->
+<!--                              includedLanguages: 'en,vi,id,zh-CN,zh-TW,',-->
+<!--                          },'google_translate_element');-->
+<!--                    }-->
+<!--                 </script>-->
+<!--                 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <p></p>-->
+<!--                <button  id="south_search_open" class="easyui-linkbutton"  data-options="iconCls:'icon-search'" style="width:100px;"><b>開啟搜尋</b>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--              <div class="col">-->
+<!--                  <br>-->
+<!--                  <div id="south_search_dd" hidden="true">-->
+<!--                     <div class="easyui-panel" title="" style="width:100%;height: auto;padding:0px;">-->
+<!--                        <label for="searchWorkCode" style="padding-left: 15px;padding-top: 20px;">工號:</label>-->
+<!--                        <input id='searchWorkCode' class="easyui-textbox text-center"   name="searchWorkCode" style="width:70%"><br>-->
+<!--                        <label for="searchChiName" style="padding-left: 15px;padding-top: 20px;">姓名:</label>-->
+<!--                        <input id='searchChiName' class="easyui-textbox text-center"   name="searchChiName" style="width:70%"><br>-->
+<!--                        <label for="searchDept" style="padding-left: 15px;padding-top: 20px;">部門:</label>-->
+<!--                        <input id='searchDept' class="easyui-textbox text-center"   name="searchDept" style="width:70%">-->
+<!--                                                <hr>-->
+<!--                        <div style="text-align:center;padding-bottom: 20px;">-->
+<!--                         <button  id="south_search_sumit" class="easyui-linkbutton"  style="width:20%">搜尋</button>-->
+<!--                            <span style="padding-left: 30px;"></span>-->
+<!--                         <button  id="south_search_clear" class="btn-sm btn-dark btn btn-outline-warning tooltip" style="width:20%">清除</button>-->
+<!--                        </div>-->
+<!--                     </div>-->
+<!--                </div>-->
+<!--              </div>-->
+
+          </div>
+        </div>
+{% endblock %}
+
+
+{% block center_extra %}
+      <iframe width="100%" height="94%"></iframe>
+{% endblock %}
+
+{% block bottom_script %}
+    var columnOrder = {{column_order|safe}};    //safe:禁用變量的自動轉義
+    var userId = "{{user.username}}";
+{% endblock %}
